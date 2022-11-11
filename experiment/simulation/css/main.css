@@ -667,7 +667,7 @@ margin-top: 2%;
 
 /* ----------------------------------------------- Phones ---------------------------------- */
 
-@media (max-width: 720px){
+@media (max-width: 720px) and (min-width: 470px){
 
   
   .max-width{
@@ -742,6 +742,191 @@ margin-top: 2%;
     width: 100%;
     margin-right: 10%;
     margin-top: 10%;
+  }
+  .fre .fre-content .right .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  
+  .sys{
+    display: flex;
+    color: #000000; /* Color of Name, and moving text in first page*/
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .sys .sys-content{
+      margin-top: 10%;
+  }
+  .sys .sys-content .left{
+    width: 100%;
+    margin-left: 50%;
+    margin-top: 15%;
+  }
+  .sys .sys-content .middle{
+    width: 50%;
+    margin-top: 0%;
+    margin-left: 40%;
+  }
+  .sys .sys-content .middle1{
+      width: 100%;
+      margin-left: -15%;
+      margin-top: -20%;
+  }
+  .sys .sys-content .right{
+    width: 100%;
+    margin-top: 30%;
+    margin-left: 0%;
+  }
+  .sys .sys-content .right .img{
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  .mva{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .mva .t{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 10%;
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  }
+  .mva .mva-content{
+    width: 100%;
+    margin-top: 10%;
+  }
+  .mva .mva-content .left{
+  width: 50%;
+  margin-left: 5%;
+  }
+  .mva .mva-content .left1{
+    width: 50%;
+    margin-left: 25%;
+  }
+  .mva .mva-content .left .input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  }
+  .mva .mva-content .middle{
+  width: 50%;
+  margin-left: 15%;
+  }
+  .mva .mva-content .middle1{
+    width: 50%;
+    margin-top: -5%;
+    margin-left: 10%;
+  }
+  .mva .mva-content .middle .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .mva .mva-content .right{
+  width: 100%;
+  margin-left: 20%;
+  }
+  .mva .mva-content .right .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+
+}
+
+/* ------------------------------------- Small Phones ------------------------------------ */
+
+@media (max-width: 470px){
+
+  
+  .max-width{
+    max-width: 460px;
+    padding: 0 40px;
+    margin: auto;
+  }
+  
+  .fre, .sys, .blk, .blk1, .fourier, .haar, .footer{
+  font-family: 'Poppins', sans-serif;
+  }
+  
+  .fre .fre-content,
+  .sys .sys-content,
+  .mva .mva-content{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  } /* change orientations here */
+  
+  section .title{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 10%;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .fre{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .fre .t{
+    position: relative;
+    text-align: center;
+    color: #000000;
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 10%;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .fre .fre-content{
+    margin-top: 10%;
+  }
+  .fre .fre-content .left{
+  width: 100%;
+  margin-left: 50%;
+  margin-top: 15%;
+  }
+  .fre .fre-content .middle{
+  width: 50%;
+  margin-top: 0%;
+  margin-left: 40%;
+  }
+  .fre .fre-content .middle1{
+    width: 100%;
+    margin-left: -50%;
+    margin-top: -20%;
+  }
+  .fre .fre-content .right{
+  width: 100%;
+  margin-top: 30%;
+  margin-left: -10%;
+  }
+  .fre .fre-content .right1{
+    width: 100%;
+    margin-right: 10%;
+    margin-top: -10%;
   }
   .fre .fre-content .right .img{
   height: 400px;
