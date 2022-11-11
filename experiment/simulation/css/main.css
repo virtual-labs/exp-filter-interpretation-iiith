@@ -80,7 +80,7 @@ section .title{
 .fre .fre-content .left{
   width: 30%;
   margin-top: 10%;
-  margin-left: 15%;
+  margin-left: 20%;
   margin-right: -10%;;
 }
 .fre .fre-content .left .input[type=text] {
@@ -91,7 +91,7 @@ section .title{
 }
 .fre .fre-content .middle{
   width: 40%;
-  margin-left: 15%;
+  margin-left: 10%;
 }
 .fre .fre-content .middle .img{
 height: 400px;
@@ -228,7 +228,7 @@ border-radius: 6px;
 
 /* ----------------------------------------- Tabs ------------------------------------------ */
 
-@media (max-width: 1200px) and (min-width: 480px){
+@media (max-width: 1200px) and (min-width: 720px){
 
   
 .max-width{
@@ -664,6 +664,446 @@ margin-top: 2%;
 }
 
 }
+
+/* ----------------------------------------------- Phones ---------------------------------- */
+
+@media (max-width: 720px){
+
+  
+  .max-width{
+    max-width: 715px;
+    padding: 0 40px;
+    margin: auto;
+  }
+  
+  .fre, .sys, .blk, .blk1, .fourier, .haar, .footer{
+  font-family: 'Poppins', sans-serif;
+  }
+  
+  .fre .fre-content,
+  .sys .sys-content,
+  .mva .mva-content{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  } /* change orientations here */
+  
+  section .title{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 10%;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .fre{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .fre .t{
+    position: relative;
+    text-align: center;
+    color: #000000;
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 10%;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .fre .fre-content{
+    margin-top: 10%;
+  }
+  .fre .fre-content .left{
+  width: 100%;
+  margin-left: 50%;
+  margin-top: 15%;
+  }
+  .fre .fre-content .middle{
+  width: 100%;
+  margin-top: -10%;
+  }
+  .fre .fre-content .middle1{
+    width: 100%;
+    margin-left: -50%;
+    margin-top: -20%;
+  }
+  .fre .fre-content .right{
+  width: 100%;
+  margin-top: 30%;
+  margin-left: 10%;
+  }
+  .fre .fre-content .right1{
+    width: 100%;
+    margin-right: 10%;
+    margin-top: 10%;
+  }
+  .fre .fre-content .right .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  
+  .sys{
+    display: flex;
+    color: #000000; /* Color of Name, and moving text in first page*/
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .sys .sys-content{
+      margin-top: 10%;
+  }
+  .sys .sys-content .left{
+    width: 100%;
+    margin-left: 30%;
+    margin-top: 15%;
+  }
+  .sys .sys-content .middle{
+    width: 50%;
+  }
+  .sys .sys-content .middle1{
+      width: 50%;
+      margin-left: -15%;
+      margin-top: -20%;
+  }
+  .sys .sys-content .right{
+    width: 100%;
+    margin-top: 10%;
+    margin-left: 20%;
+  }
+  .sys .sys-content .right .img{
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  .mva{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .mva .t{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 10%;
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  }
+  .mva .mva-content{
+    width: 100%;
+    margin-top: 10%;
+  }
+  .mva .mva-content .left{
+  width: 50%;
+  margin-left: 5%;
+  }
+  .mva .mva-content .left1{
+    width: 50%;
+    margin-left: 25%;
+  }
+  .mva .mva-content .left .input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  }
+  .mva .mva-content .middle{
+  width: 50%;
+  margin-left: 15%;
+  }
+  .mva .mva-content .middle1{
+    width: 50%;
+    margin-top: -5%;
+    margin-left: 10%;
+  }
+  .mva .mva-content .middle .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .mva .mva-content .right{
+  width: 100%;
+  margin-left: 20%;
+  }
+  .mva .mva-content .right .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  
+  .blk{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .blk .t{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 0%;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .blk .blk-content{
+    width: 100%;
+  margin-top: 10%;
+  }
+  .blk .blk-content .left{
+  width: 50%;
+  margin-top: -5%;
+  margin-left: 10%;
+  }
+  .blk .blk-content .left1{
+  width: 50%;
+  margin-top: -20%;
+  margin-left: 10%;
+  }
+  .blk .blk-content .left .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .blk .blk-content .middle{
+  width: 50%;
+  margin-top: 5%;
+  }
+  .blk .blk-content .middle1{
+  width: 50%;
+  margin-top: 25%;
+  }
+  .blk .blk-content .middle2{
+  width: 50%;
+  margin-top: 15%;
+  margin-bottom: -15%;
+  }
+  .blk .blk-content .middle .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .blk .blk-content .right{
+  width: 100%;
+  margin-top: -35%;
+  margin-left: 20%;
+  }
+  .blk .blk-content .right1{
+  width: 100%;
+  margin-top: -35%;
+  }
+  .blk .blk-content .right2{
+  width: 100%;
+  margin-top: -20%;
+  }
+  .blk .blk-content .right .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .blk .blk-content .right .input[type=text] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  }
+  
+  .blk1{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .blk1 .t{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 0%;
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  margin-top: 10%;
+  }
+  .blk1 .blk1-content{
+    width: 100%;
+  }
+  .blk1 .blk1-content .left{
+  width: 50%;
+  margin-top: 10%;
+  margin-left: 10%;
+  }
+  .blk1 .blk1-content .left .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .blk1 .blk1-content .middle{
+  width: 50%;
+  margin-top: 10%;
+  }
+  .blk1 .blk1-content .middle1{
+    width: 50%;
+    margin-top: 30%;
+    margin-bottom: -5%;
+  }
+  .blk1 .blk1-content .right{
+  width: 100%;
+  margin-top: -10%;
+  margin-left: 20%;
+  }
+  .blk1 .blk1-content .right .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .blk1 .blk1-content .right1{
+    width: 100%;
+    margin-top: -30%;
+    margin-left: 10%;
+  }
+  .blk1 .blk1-content .right2{
+      width: 100%;
+      margin-top: -50%;
+      margin-left: 40%;
+  }
+  .blk1 .blk1-content .right1 .img{
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  .blk1 .blk1-content .right .input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  }
+  .blk1 .blk1-content .right2 .input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  
+  .blok{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .blok .t{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 0%;
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  margin-top: 10%;
+  }
+  .blok .t1{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 250;
+  margin-top: 15%;
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  }
+  .blok .blok-content{
+    margin-top: 10%;
+  margin-bottom: -10%;
+  }
+  .blok .blok-content .left{
+  width: 50%;
+  margin-top: 10%;
+  }
+  .blok .blok-content .left .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .blok .blok-content .one{
+  width: 33%;
+  margin-top: 10%;
+  margin-left: 15%;
+  }
+  .blok .blok-content .two{
+  width: 33%;
+  margin-top: 10%;
+  margin-left: 3%;
+  }
+  .blok .blok-content .three{
+  width: 33%;
+  margin-top: 10%;
+  margin-left: 2%;
+  }
+  .blok .blok-content .one1{
+  width: 33%;
+  margin-left: 7%;
+  margin-top: 10%;
+  }
+  .blok .blok-content .two1{
+  width: 33%;
+  margin-left: 5%;
+  margin-top: 10%;
+  }
+  .blok .blok-content .three1{
+  width: 34%;
+  margin-left: 5%;
+  margin-top: 10%;
+  }
+  .blok .blok-content .middle{
+  width: 50%;
+  margin-top: -10%;
+  }
+  .blok .blok-content .middle1{
+  width: 50%;
+  margin-top: -5%;
+  }
+  .blok .blok-content .right{
+  width: 100%;
+  margin-top: -10%;
+  margin-left: 15%;
+  }
+  .blok .blok-content .right .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .blok .blok-content .right1{
+  width: 100%;
+  margin-top: 2%;
+  }
+  
+  }
 
 .select1{
   position: relative;
