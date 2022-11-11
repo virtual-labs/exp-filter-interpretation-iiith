@@ -725,8 +725,8 @@ margin-top: 2%;
   }
   .fre .fre-content .middle{
   width: 50%;
-  margin-top: -10%;
-  margin-left: 60%;
+  margin-top: 0%;
+  margin-left: 40%;
   }
   .fre .fre-content .middle1{
     width: 100%;
@@ -767,11 +767,11 @@ margin-top: 2%;
   }
   .sys .sys-content .middle{
     width: 50%;
-    margin-top: -10%;
-    margin-left: 20%;
+    margin-top: 0%;
+    margin-left: 40%;
   }
   .sys .sys-content .middle1{
-      width: 50%;
+      width: 100%;
       margin-left: -15%;
       margin-top: -20%;
   }
