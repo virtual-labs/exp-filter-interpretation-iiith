@@ -724,9 +724,9 @@ margin-top: 2%;
   margin-top: 15%;
   }
   .fre .fre-content .middle{
-  width: 100%;
+  width: 50%;
   margin-top: -10%;
-  margin-left: 20%;
+  margin-left: 60%;
   }
   .fre .fre-content .middle1{
     width: 100%;
@@ -762,11 +762,13 @@ margin-top: 2%;
   }
   .sys .sys-content .left{
     width: 100%;
-    margin-left: 30%;
+    margin-left: 50%;
     margin-top: 15%;
   }
   .sys .sys-content .middle{
     width: 50%;
+    margin-top: -10%;
+    margin-left: 20%;
   }
   .sys .sys-content .middle1{
       width: 50%;
@@ -775,7 +777,7 @@ margin-top: 2%;
   }
   .sys .sys-content .right{
     width: 100%;
-    margin-top: 10%;
+    margin-top: 30%;
     margin-left: 20%;
   }
   .sys .sys-content .right .img{
