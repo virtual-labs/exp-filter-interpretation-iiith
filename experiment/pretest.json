@@ -2,38 +2,60 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": " Which of the following functions cannot be frequency response of a discrete-time LTI system? ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "$H(\\omega) = \\sin(\\omega) $",
+        "b": "$H(\\omega) = \\sin(2\\omega)$",
+        "c": "$H(\\omega) = \\sin(\\omega/2)$",
+        "d": "$H(\\omega) = \\sin^2(\\omega)$"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "This is a Sample Question 2?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "Explanation": "The frequency response must be a periodic function with period 2 \\pi "
       },
       "correctAnswer": "c",
-      "difficulty": "beginner"
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "The signal $x[n] = 1 + \\sin(n) + \\sin(\\pi n)$ is given as input to a low pass filter with cut-off frequency of 2. Select the correct statement from the following: ",
+      "answers": {
+        "a": "Both $x[n]$ and $y[n]$ are periodic ",
+        "b": "$x[n]$ is periodic but $y[n]$ is not",
+        "c": "$y[n]$ is periodic but $x[n]$ is not",
+        "d": " Neither $x[n]$ or $y[n]$ are periodic "
+      },
+      "explanations": {
+        "Explanation": "The discrete-time signal $\\sin(n)$ is not a periodic signal. The output of low pass filter would be $y[n] = 1 + \\sin(n)$. Since both input and output contain the signal $\\sin(n)$, neither are periodic signals. "
+      },
+      "correctAnswer": "d",
+      "difficulty": "Intermediate"
+    },
+    {
+      "question": "If the magnitude response of an LTI system is constant and the phase response is linear, then the input and output are related by ",
+      "answers": {
+        "a": "output signal is a scaled and delayed version of the input signal ",
+        "b": " output signal is always a scaled version of the input signal ",
+        "c": "output signal is always a delayed version of the input signal ",
+        "d": "cannot be determined"
+      },
+      "explanations": {
+        "Explanation": "Linear phase causes a delay and constant magnitude implies a scaling of the input signal. "
+      },
+      "correctAnswer": "a",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "If the input to an LTI system is $x[n] = e^(jn)$, the system output  ",
+      "answers": {
+        "a": "is always of the form $y[n] = A e^(jn)$ ",
+        "b": "is always of the form $y[n] = e^(jn)$ ",
+        "c": "is always of the form $y[n] = A e^(jn + j\\phi)$",
+        "d": "cannot be determined "
+      },
+      "explanations": {
+        "explanations": " Since the input signal is an eigenfunction of the LTI system, the output signal has the same form except for change in amplitude and phase. "
+      },
+      "correctAnswer": "c",
+      "difficulty": "Intermediate"
     }
   ]
 }

@@ -2,38 +2,46 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "The signal $x[n] = 1 + \\cos(n) + \\cos(\\pi n)$ is given as input to a high pass filter with cut-off frequency of 2. Select the correct statement from the following: ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Both $x[n]$ and $y[n]$ are periodic ",
+        "b": "$x[n]$ is periodic but $y[n]$ is not",
+        "c": "$y[n]$ is periodic but $x[n]$ is not",
+        "d": " Neither $x[n]$ or $y[n]$ are periodic "
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
-      "difficulty": "beginner"
-    },
-    {
-      "question": "This is a Sample Question 2?",
-      "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
-      },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "Explanation": "Check the input-output relationship of LTI systems in frequency domain "
       },
       "correctAnswer": "c",
-      "difficulty": "beginner"
+      "difficulty": "Advance"
+    },
+    {
+      "question": "An LTI system with impulse response $h[n] = x[n] - x[n-1]$ acts as an  ",
+      "answers": {
+        "a": "low pass filter ",
+        "b": "high pass filter ",
+        "c": "band pass filter ",
+        "d": " all pass filter  "
+      },
+      "explanations": {
+        "Explanation": "Simulate the system and verify from its frequency response  "
+      },
+      "correctAnswer": "b",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "An LTI system with impulse response $h[n] = x[n] + x[n-1]$ acts as an",
+      "answers": {
+        "a": "low pass filter ",
+        "b": "high pass filter ",
+        "c": "band pass filter ",
+        "d": " all pass filter  "
+      },
+      "explanations": {
+        "Explanation": "Simulate the system and verify from its frequency response "
+      },
+      "correctAnswer": "a",
+      "difficulty": "Beginner"
     }
   ]
 }
