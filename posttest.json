@@ -1,0 +1,47 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "The signal $x[n] = 1 + \\cos(n) + \\cos(\\pi n)$ is given as input to a high pass filter with cut-off frequency of 2. Select the correct statement from the following: ",
+      "answers": {
+        "a": "Both $x[n]$ and $y[n]$ are periodic ",
+        "b": "$x[n]$ is periodic but $y[n]$ is not",
+        "c": "$y[n]$ is periodic but $x[n]$ is not",
+        "d": " Neither $x[n]$ or $y[n]$ are periodic "
+      },
+      "explanations": {
+        "Explanation": "Check the input-output relationship of LTI systems in frequency domain "
+      },
+      "correctAnswer": "c",
+      "difficulty": "Advance"
+    },
+    {
+      "question": "An LTI system with impulse response $h[n] = x[n] - x[n-1]$ acts as an  ",
+      "answers": {
+        "a": "low pass filter ",
+        "b": "high pass filter ",
+        "c": "band pass filter ",
+        "d": " all pass filter  "
+      },
+      "explanations": {
+        "Explanation": "Simulate the system and verify from its frequency response  "
+      },
+      "correctAnswer": "b",
+      "difficulty": "Beginner"
+    },
+    {
+      "question": "An LTI system with impulse response $h[n] = x[n] + x[n-1]$ acts as an",
+      "answers": {
+        "a": "low pass filter ",
+        "b": "high pass filter ",
+        "c": "band pass filter ",
+        "d": " all pass filter  "
+      },
+      "explanations": {
+        "Explanation": "Simulate the system and verify from its frequency response "
+      },
+      "correctAnswer": "a",
+      "difficulty": "Beginner"
+    }
+  ]
+}
