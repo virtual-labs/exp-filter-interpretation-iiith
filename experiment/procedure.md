@@ -47,7 +47,7 @@ The task here is to identify the system which **cannot** be used for this purpos
 
 1. Select the filter in the drop down box in the centre
 
-The observartions tab at the bottom shows comments on whether the chosen system is the correct choice.
+The observations tab at the bottom shows comments on whether the chosen system is the correct choice.
 
 #### Quiz 2
 
@@ -60,4 +60,4 @@ The task here is to identify a system, and provide parameters for the system whi
 
 Please note that **multiple solutions** are possible here.
 
-The observartions tab at the bottom shows comments on whether the chosen system is the correct choice.
+The observations tab at the bottom shows comments on whether the chosen system is the correct choice.

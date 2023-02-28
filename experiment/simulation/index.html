@@ -32,7 +32,50 @@
 	<div id="FR" class="tabcontent">
 		<section class="fre" id="frqe">
 			<div class="max-width">
-				<h2 class="t">Frequency Response of Few Systems</h2>
+				<h2 class="title">Frequency Response of Few Systems</h2>
+				<div class="columns is-centered" style="margin-bottom: -5%;">
+					<div class="v-collapsible-instruction-container v-instruction-container">
+						<div class="v-collapsible is-size-5">Instructions</div>
+						<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+							Select a system, and visualize the frequency response of the LTI system by tweaking some parameters of the frequency response. Click on the <b> Check </b> button to visualize the plots. Steps to be done are as follows
+							<ol>
+								<li> Select the system in the drop down provided in the center box </li>
+								<li> Enter the Parameter values as required </li>
+								<li> Click on Check button to visualize the plot in the figures </li>
+							</ol>
+							<br>
+							The parameters mentioned as "Parameter 1" and "Parameter 2" for the systems correspond to the parameters as listed below
+							
+							<table style="width:100%">
+								<tr>
+									<th>System</th>
+									<th>Parameter 1</th>
+									<th>Parameter 2</th>
+								</tr>
+								<tr>
+									<td>Low Pass</td>
+									<td>Cutoff Frequency</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>High Pass</td>
+									<td>Cutoff Frequency</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>Band Pass</td>
+									<td>Lower Cutoff Frequency</td>
+									<td>Higher Cutoff Frequency</td>
+								</tr>
+								<tr>
+									<td>Band Stop</td>
+									<td>Lower Cutoff Frequency</td>
+									<td>Higher Cutoff Frequency</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
 				<div class="fre-content">
 					<div class="column left">
 						<div class="box">
@@ -78,6 +121,50 @@
 		<section class="sys" id="system">
 			<div class="max-width">
 				<h2 class="title">Working of LTI Systems</h2>
+				<div class="columns is-centered">
+					<div class="v-collapsible-instruction-container v-instruction-container">
+						<div class="v-collapsible is-size-5">Instructions</div>
+						<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+							Select a system, and visualize the frequency response of the LTI system by selecting an input signal and by tweaking some parameters of the frequency response. Click on the <b> Check </b> button to visualize the plots. Steps to be done are as follows
+							<ol>
+								<li> Select the signal in the drop down provided </li>
+								<li> Select the parameters as required </li>
+								<li> Select the system in the drop down provided in the center box </li>
+								<li> Click on Check button to visualize the plot in the figures </li>
+							</ol>
+							<br>
+							The parameters mentioned as "Parameter 1" and "Parameter 2" for the systems correspond to the parameters as listed below
+							
+							<table style="width:100%">
+								<tr>
+									<th>System</th>
+									<th>Parameter 1</th>
+									<th>Parameter 2</th>
+								</tr>
+								<tr>
+									<td>Low Pass</td>
+									<td>Cutoff Frequency</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>High Pass</td>
+									<td>Cutoff Frequency</td>
+									<td>-</td>
+								</tr>
+								<tr>
+									<td>Band Pass</td>
+									<td>Lower Cutoff Frequency</td>
+									<td>Higher Cutoff Frequency</td>
+								</tr>
+								<tr>
+									<td>Band Stop</td>
+									<td>Lower Cutoff Frequency</td>
+									<td>Higher Cutoff Frequency</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
 				<div class="sys-content">
 					<div class="column left">
 						<div class="box">
@@ -121,7 +208,21 @@
 	<div id="MVG" class="tabcontent">
 		<section class="mva" id="average">
 			<div class="max-width">
-				<h2 class="t">Choose the system which cannot be used</h2>
+				<h2 class="title">Choose the system which cannot be used</h2>
+				<div class="columns is-centered">
+					<div class="v-collapsible-instruction-container v-instruction-container">
+						<div class="v-collapsible is-size-5">Instructions</div>
+						<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+							This section is to test the understanding, we have an input signal, which is a sum of two sinusoids of and the output of the unknown LTI system is given. 
+							<br>
+							The task here is to identify the system which <b> cannot </b> be used for this purpose. Click on the " <b> Check </b>" button to check if the choice is right or wrong. Steps to be done are as follows
+							<ol>
+								<li> Select the filter in the drop down box in the centre </li>
+							</ol>
+							The observartions tab at the bottom shows comments on whether the chosen system is the correct choice.
+						</div>
+					</div>
+				</div>
 				<div class="mva-content">
 					<div class="column left">
 						<div id='figure6'></div>
@@ -160,7 +261,24 @@
 	<div id="BLK1" class="tabcontent">
 		<section class="mva" id="black">
 			<div class="max-width">
-				<h2 class="t">Choose the system and Parameter</h2>
+				<h2 class="title">Choose the system and Parameter</h2>
+				<div class="columns is-centered">
+					<div class="v-collapsible-instruction-container v-instruction-container">
+						<div class="v-collapsible is-size-5">Instructions</div>
+						<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
+							This section is to test the understanding, get feedback and run simulations over randomly generated inputs, we have an input signal, and the output of the unknown LTI system is given.
+							<br>
+							The task here is to identify a system, and provide parameters for the system which can possibly convert the given input to the given output. Click on the "<b> Check </b>" button which would be useful for feedback. Steps to be done are as follows
+							<ol>
+								<li> Select the system in the drop down in the centre </li>
+								<li> Fill the parameters as required </li>
+							</ol>
+							Please note that <b>multiple solutions</b> are possible here.
+							<br>
+							The observations tab at the bottom shows comments on whether the chosen system is the correct choice.
+						</div>
+					</div>
+				</div>
 				<div class="mva-content">
 					<div class="column left">
 						<div id='figure8'></div>
@@ -200,6 +318,7 @@
 	</div>
 
   <script src="./js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
 
 </body>
 

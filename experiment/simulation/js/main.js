@@ -171,13 +171,13 @@ function freqResp(){
       
     Plotly.newPlot('figure1', data1, layout1, config);
       var update = {
-        width: 380,
+        width: 450,
         height: 300
     };
     Plotly.relayout('figure1', update);
     Plotly.newPlot('figure2', data2, layout2, config);
       var update = {
-        width: 380,
+        width: 450,
         height: 300
     };
     Plotly.relayout('figure2', update);
