@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 
+
 *{
     margin: 0;
     padding: 0;
@@ -1936,3 +1937,11 @@ section{
   transition: 0s;
   transform: translate(0, 5%);
 }
+
+/* ------------------------------------------ Table ------------------------------------ */
+
+table,th,td {
+        padding: 10%;
+        border: 3px solid black;
+        border-collapse: collapse;
+      }
