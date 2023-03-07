@@ -502,35 +502,29 @@ function syst(){
         x: wValues,
         y: ampSpec,
         type: 'scatter',
-        name: 'output',
         mode: 'line'
     };
     var trace2 = {
         x: wValues,
         y: filValues1,
         type: 'scatter',
-        name: 'output',
         mode: 'line'
     };
     var trace3 = {
         x: wValues,
         y: ampSpecOut,
         type: 'scatter',
-        name: 'output',
         mode: 'line'
     };
     var trace4 = {
         x: xValues,
         y: sigValues,
         type: 'scatter',
-        name: 'output',
         mode: 'line'
     };
     var trace5 = {
         x: xValues,
         y: sigRealOut,
-        type: 'scatter',
-        name: 'output',
         mode: 'line'
     };
     var data1 = [trace1,trace2];
@@ -546,7 +540,8 @@ function syst(){
         },
         yaxis: {
             title: 'Magnitude'
-        }
+        },
+        showlegend: false
     };
 
     var layout2 = {
@@ -556,7 +551,8 @@ function syst(){
         },
         yaxis: {
             title: 'Amplitude'
-        }
+        },
+        showlegend: false
     };
       
     Plotly.newPlot('figure3', data1, layout1, config);
