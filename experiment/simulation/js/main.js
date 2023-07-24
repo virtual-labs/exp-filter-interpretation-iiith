@@ -170,16 +170,40 @@ function freqResp(){
     };
       
     Plotly.newPlot('figure1', data1, layout1, config);
-      var update = {
-        width: 450,
-        height: 300
-    };
+    
+    if(screen.width < 769)
+    {
+        var update = {
+            width: 0.9*screen.width,
+            height: 400
+        };
+    }
+    else
+    {
+        var update = {
+            width: 500,
+            height: 400
+        };
+    }
+
     Plotly.relayout('figure1', update);
     Plotly.newPlot('figure2', data2, layout2, config);
-      var update = {
-        width: 450,
-        height: 300
-    };
+    
+    if(screen.width < 769)
+    {
+        var update = {
+            width: 0.9*screen.width,
+            height: 400
+        };
+    }
+    else
+    {
+        var update = {
+            width: 500,
+            height: 400
+        };
+    }
+
     Plotly.relayout('figure2', update);
 }
 
@@ -556,24 +580,59 @@ function syst(){
     };
       
     Plotly.newPlot('figure3', data1, layout1, config);
-      var update = {
-        width: 500,
-        height: 300
-    };
-    Plotly.relayout('figure3', update);
+    
+    if(screen.width < 769)
+    {
+        var update = {
+            width: 0.9*screen.width,
+            height: 400
+        };
+    }
+    else
+    {
+        var update = {
+            width: 500,
+            height: 400
+        };
+    }
 
+    Plotly.relayout('figure3', update);
     Plotly.newPlot('figure4', data2, layout1, config);
-      var update = {
-        width: 500,
-        height: 300
-    };
+    
+    if(screen.width < 769)
+    {
+        var update = {
+            width: 0.9*screen.width,
+            height: 400
+        };
+    }
+    else
+    {
+        var update = {
+            width: 500,
+            height: 400
+        };
+    }
+
     Plotly.relayout('figure4', update);
 
     Plotly.newPlot('figure5', data3, layout2, config);
-      var update = {
-        width: 500,
-        height: 300
-    };
+    
+    if(screen.width < 769)
+    {
+        var update = {
+            width: 0.9*screen.width,
+            height: 400
+        };
+    }
+    else
+    {
+        var update = {
+            width: 500,
+            height: 400
+        };
+    }
+
     Plotly.relayout('figure5', update);
 }
 
@@ -633,17 +692,41 @@ function mInit(){
     };
       
     Plotly.newPlot('figure6', data1, layout1, config);
-      var update = {
-        width: 500,
-        height: 400
-    };
+    
+    if(screen.width < 769)
+    {
+        var update = {
+            width: 0.9*screen.width,
+            height: 400
+        };
+    }
+    else
+    {
+        var update = {
+            width: 400,
+            height: 400
+        };
+    }
+
     Plotly.relayout('figure6', update);
 
     Plotly.newPlot('figure7', data2, layout1, config);
-      var update = {
-        width: 500,
-        height: 400
-    };
+    
+    if(screen.width < 769)
+    {
+        var update = {
+            width: 0.9*screen.width,
+            height: 400
+        };
+    }
+    else
+    {
+        var update = {
+            width: 400,
+            height: 400
+        };
+    }
+
     Plotly.relayout('figure7', update);
 }
 
@@ -724,17 +807,41 @@ function qInit(){
     };
       
     Plotly.newPlot('figure8', data1, layout1, config);
-      var update = {
-        width: 500,
-        height: 400
-    };
+    
+    if(screen.width < 769)
+    {
+        var update = {
+            width: 0.9*screen.width,
+            height: 400
+        };
+    }
+    else
+    {
+        var update = {
+            width: 500,
+            height: 400
+        };
+    }
+
     Plotly.relayout('figure8', update);
 
     Plotly.newPlot('figure9', data2, layout1, config);
-      var update = {
-        width: 500,
-        height: 400
-    };
+    
+    if(screen.width < 769)
+    {
+        var update = {
+            width: 0.9*screen.width,
+            height: 400
+        };
+    }
+    else
+    {
+        var update = {
+            width: 500,
+            height: 400
+        };
+    }
+    
     Plotly.relayout('figure9', update);
 }
 
