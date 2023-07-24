@@ -35,7 +35,7 @@ html{
     margin: auto;
 }
 
-.fre, .sys, .blk, .blk1, .fourier, .haar, .footer{
+.fre, .sys{
   font-family: 'Poppins', sans-serif;
 }
 
@@ -73,54 +73,6 @@ section .title{
   font-weight: 500;
   margin-top: 0%;
   font-family: 'Ubuntu', sans-serif;
-}
-.fre .fre-content{
-  width: 100%;
-  margin-top: 0%;
-}
-.fre .fre-content .left{
-  width: 30%;
-  margin-top: 10%;
-  margin-left: 20%;
-  margin-right: -10%;;
-}
-.fre .fre-content .left .input[type=text] {
-  width: 30%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-}
-.fre .fre-content .middle{
-  width: 40%;
-  margin-left: 10%;
-}
-.fre .fre-content .middle .img{
-height: 400px;
-width: 400px;
-object-fit: cover;
-border-radius: 6px;
-}
-.fre .fre-content .middle1{
-  width: 40%;
-  margin-left: -25%;
-  margin-top: -10%;
-}
-.fre .fre-content .right{
-  width: 20%;
-  margin-left: -8%;
-  margin-right: -5%;
-  margin-top: 5%;
-}
-.fre .fre-content .right1{
-  width: 20%;
-  margin-right: -10%;
-  margin-top: 5%;
-}
-.fre .fre-content .right .img{
-height: 200px;
-width: 200px;
-object-fit: cover;
-border-radius: 6px;
 }
 
 .sys{
@@ -225,11 +177,408 @@ object-fit: cover;
 border-radius: 6px;
 }
 
+.box1 {
+  position: relative;
+  margin-top: 70%;
+  margin-left: 15%;
+  margin-bottom: -40%;
+  transform: translate(-50%, -50%);
+  width: 130%;
 }
+
+.box1 select {
+  background-color: #98CB3B;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border-style: solid;
+  border-width: 100px;
+  border-block-color: #176696;
+  border-block-start-color: #176696;
+  border-top-color: #176696;
+  border-color: #176696;
+  font-size: 20px;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.box1::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: #176696;
+  background-color: #176696;
+  pointer-events: none;
+}
+
+.box1:hover::before {
+  color: #176696;
+  background-color: #176696;
+}
+
+.box1 select option {
+  padding: 30px;
+}
+
+.fill {
+  position: relative;
+  margin-left: 20%;
+  margin-top: 20%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+}
+.fill1 {
+  position: relative;
+  margin-left: -10%;
+  margin-top: 20%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  float: left;
+}
+.fill2 {
+  position: relative;
+  margin-left: -10%;
+  margin-top: 20%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  float: left;
+}
+
+.box {
+  position: relative;
+  margin-left: -10%;
+  margin-right: 20%;
+  margin-top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.box select {
+  background-color: #98CB3B;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.box::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+  padding: 30px;
+}
+
+}
+
+/* ----------------------------------------- Big Tabs ------------------------------------------ */
+
+@media (max-width: 1200px) and (min-width: 768px){
+
+  
+  .max-width{
+    max-width: 1024px;
+    padding: 0 40px;
+    margin: auto;
+  }
+  
+  .fre, .sys, .blk, .blk1, .fourier, .haar, .footer{
+  font-family: 'Poppins', sans-serif;
+  }
+  
+  .fre .fre-content,
+  .sys .sys-content,
+  .mva .mva-content{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  } /* change orientations here */
+  
+  section .title{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 10%;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .fre{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .fre .t{
+    position: relative;
+    text-align: center;
+    color: #000000;
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 10%;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .sys{
+    display: flex;
+    color: #000000; /* Color of Name, and moving text in first page*/
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  .sys .sys-content{
+      margin-top: 10%;
+  }
+  .sys .sys-content .left{
+    width: 100%;
+    margin-left: 30%;
+    margin-top: 15%;
+  }
+  .sys .sys-content .middle{
+    width: 50%;
+  }
+  .sys .sys-content .middle1{
+      width: 50%;
+      margin-left: -15%;
+      margin-top: -20%;
+  }
+  .sys .sys-content .right{
+    width: 100%;
+    margin-top: 10%;
+    margin-left: 20%;
+  }
+  .sys .sys-content .right .img{
+    height: 400px;
+    width: 400px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  .mva{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+  }
+  .mva .t{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 10%;
+  font-family: 'Ubuntu', sans-serif;
+  width: 100%;
+  }
+  .mva .mva-content{
+    width: 100%;
+    margin-top: 10%;
+  }
+  .mva .mva-content .left{
+  width: 50%;
+  margin-left: 5%;
+  }
+  .mva .mva-content .left1{
+    width: 50%;
+    margin-left: 25%;
+  }
+  .mva .mva-content .left .input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  }
+  .mva .mva-content .middle{
+  width: 50%;
+  margin-left: 15%;
+  }
+  .mva .mva-content .middle1{
+    width: 50%;
+    margin-top: -5%;
+    margin-left: 10%;
+  }
+  .mva .mva-content .middle .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  .mva .mva-content .right{
+  width: 100%;
+  margin-left: 20%;
+  }
+  .mva .mva-content .right .img{
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  border-radius: 6px;
+  }
+  
+  .box1 {
+    position: relative;
+    margin-top: 130%;
+    margin-left: 55%;
+    margin-bottom: -40%;
+    transform: translate(-50%, -50%);
+    width: 130%;
+  }
+  
+  .box1 select {
+    background-color: #98CB3B;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border-style: solid;
+    border-width: 100px;
+    border-block-color: #176696;
+    border-block-start-color: #176696;
+    border-top-color: #176696;
+    border-color: #176696;
+    font-size: 20px;
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+  .box1::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: #176696;
+    background-color: #176696;
+    pointer-events: none;
+  }
+  
+  .box1:hover::before {
+    color: #176696;
+    background-color: #176696;
+  }
+  
+  .box1 select option {
+    padding: 30px;
+  }
+  
+  .fill {
+    position: relative;
+    margin-left: 20%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+  }
+  .fill1 {
+    position: relative;
+    margin-left: 25%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    float: left;
+  }
+  .fill2 {
+    position: relative;
+    margin-left: 25%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    float: left;
+  }
+  
+  .box {
+    position: relative;
+    margin-left: 30%;
+    margin-right: 20%;
+    margin-top: 40%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .box select {
+    background-color: #98CB3B;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+  .box::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+  
+  .box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .box select option {
+    padding: 30px;
+  }
+  
+  }
 
 /* ----------------------------------------- Tabs ------------------------------------------ */
 
-@media (max-width: 1200px) and (min-width: 720px){
+@media (max-width: 768px) and (min-width: 720px){
 
   
 .max-width{
@@ -276,38 +625,6 @@ font-family: 'Ubuntu', sans-serif;
   font-weight: 500;
   margin-top: 10%;
   font-family: 'Ubuntu', sans-serif;
-}
-.fre .fre-content{
-  margin-top: 10%;
-}
-.fre .fre-content .left{
-width: 100%;
-margin-left: 30%;
-margin-top: 15%;
-}
-.fre .fre-content .middle{
-width: 50%;
-}
-.fre .fre-content .middle1{
-  width: 50%;
-  margin-left: -50%;
-  margin-top: -20%;
-}
-.fre .fre-content .right{
-width: 100%;
-margin-top: 10%;
-margin-left: 10%;
-}
-.fre .fre-content .right1{
-  width: 100%;
-  margin-right: 10%;
-  margin-top: 10%;
-}
-.fre .fre-content .right .img{
-height: 400px;
-width: 400px;
-object-fit: cover;
-border-radius: 6px;
 }
 
 .sys{
@@ -406,269 +723,135 @@ object-fit: cover;
 border-radius: 6px;
 }
 
-.blk{
-display: flex;
-color: #000000; /* Color of Name, and moving text in first page*/
-background-size: cover;
-background-attachment: fixed;
-font-family: 'Ubuntu', sans-serif;
+.box1 {
+  position: relative;
+  margin-top: 100%;
+  margin-left: 55%;
+  margin-bottom: -40%;
+  transform: translate(-50%, -50%);
+  width: 130%;
 }
-.blk .t{
-position: relative;
-text-align: center;
-color: #000000;
-font-size: 40px;
-font-weight: 500;
-margin-top: 0%;
-font-family: 'Ubuntu', sans-serif;
-}
-.blk .blk-content{
+
+.box1 select {
+  background-color: #98CB3B;
+  color: white;
+  padding: 12px;
   width: 100%;
-margin-top: 10%;
-}
-.blk .blk-content .left{
-width: 50%;
-margin-top: -5%;
-margin-left: 10%;
-}
-.blk .blk-content .left1{
-width: 50%;
-margin-top: -20%;
-margin-left: 10%;
-}
-.blk .blk-content .left .img{
-height: 400px;
-width: 400px;
-object-fit: cover;
-border-radius: 6px;
-}
-.blk .blk-content .middle{
-width: 50%;
-margin-top: 5%;
-}
-.blk .blk-content .middle1{
-width: 50%;
-margin-top: 25%;
-}
-.blk .blk-content .middle2{
-width: 50%;
-margin-top: 15%;
-margin-bottom: -15%;
-}
-.blk .blk-content .middle .img{
-height: 400px;
-width: 400px;
-object-fit: cover;
-border-radius: 6px;
-}
-.blk .blk-content .right{
-width: 100%;
-margin-top: -35%;
-margin-left: 20%;
-}
-.blk .blk-content .right1{
-width: 100%;
-margin-top: -35%;
-}
-.blk .blk-content .right2{
-width: 100%;
-margin-top: -20%;
-}
-.blk .blk-content .right .img{
-height: 400px;
-width: 400px;
-object-fit: cover;
-border-radius: 6px;
-}
-.blk .blk-content .right .input[type=text] {
-width: 40%;
-padding: 12px 20px;
-margin: 8px 0;
-box-sizing: border-box;
+  border-style: solid;
+  border-width: 100px;
+  border-block-color: #176696;
+  border-block-start-color: #176696;
+  border-top-color: #176696;
+  border-color: #176696;
+  font-size: 20px;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
 }
 
-.blk1{
-display: flex;
-color: #000000; /* Color of Name, and moving text in first page*/
-background-size: cover;
-background-attachment: fixed;
-font-family: 'Ubuntu', sans-serif;
+.box1::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: #176696;
+  background-color: #176696;
+  pointer-events: none;
 }
-.blk1 .t{
-position: relative;
-text-align: center;
-color: #000000;
-font-size: 40px;
-font-weight: 500;
-margin-top: 0%;
-font-family: 'Ubuntu', sans-serif;
-width: 100%;
-margin-top: 10%;
+
+.box1:hover::before {
+  color: #176696;
+  background-color: #176696;
 }
-.blk1 .blk1-content{
+
+.box1 select option {
+  padding: 30px;
+}
+
+.fill {
+  position: relative;
+  margin-left: 20%;
+  margin-top: 20%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+}
+.fill1 {
+  position: relative;
+  margin-left: 25%;
+  margin-top: 20%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  float: left;
+}
+.fill2 {
+  position: relative;
+  margin-left: 25%;
+  margin-top: 20%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  float: left;
+}
+
+.box {
+  position: relative;
+  margin-left: 30%;
+  margin-right: 20%;
+  margin-top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.box select {
+  background-color: #98CB3B;
+  color: white;
+  padding: 12px;
   width: 100%;
-}
-.blk1 .blk1-content .left{
-width: 50%;
-margin-top: 10%;
-margin-left: 10%;
-}
-.blk1 .blk1-content .left .img{
-height: 400px;
-width: 400px;
-object-fit: cover;
-border-radius: 6px;
-}
-.blk1 .blk1-content .middle{
-width: 50%;
-margin-top: 10%;
-}
-.blk1 .blk1-content .middle1{
-  width: 50%;
-  margin-top: 30%;
-  margin-bottom: -5%;
-}
-.blk1 .blk1-content .right{
-width: 100%;
-margin-top: -10%;
-margin-left: 20%;
-}
-.blk1 .blk1-content .right .img{
-height: 400px;
-width: 400px;
-object-fit: cover;
-border-radius: 6px;
-}
-.blk1 .blk1-content .right1{
-  width: 100%;
-  margin-top: -30%;
-  margin-left: 10%;
-}
-.blk1 .blk1-content .right2{
-    width: 100%;
-    margin-top: -50%;
-    margin-left: 40%;
-}
-.blk1 .blk1-content .right1 .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-.blk1 .blk1-content .right .input[type=text] {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-box-sizing: border-box;
-}
-.blk1 .blk1-content .right2 .input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
 }
 
-.blok{
-display: flex;
-color: #000000; /* Color of Name, and moving text in first page*/
-background-size: cover;
-background-attachment: fixed;
-font-family: 'Ubuntu', sans-serif;
+.box::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
 }
-.blok .t{
-position: relative;
-text-align: center;
-color: #000000;
-font-size: 40px;
-font-weight: 500;
-margin-top: 0%;
-font-family: 'Ubuntu', sans-serif;
-width: 100%;
-margin-top: 10%;
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
 }
-.blok .t1{
-position: relative;
-text-align: center;
-color: #000000;
-font-size: 20px;
-font-weight: 250;
-margin-top: 15%;
-font-family: 'Ubuntu', sans-serif;
-width: 100%;
-}
-.blok .blok-content{
-  margin-top: 10%;
-margin-bottom: -10%;
-}
-.blok .blok-content .left{
-width: 50%;
-margin-top: 10%;
-}
-.blok .blok-content .left .img{
-height: 400px;
-width: 400px;
-object-fit: cover;
-border-radius: 6px;
-}
-.blok .blok-content .one{
-width: 33%;
-margin-top: 10%;
-margin-left: 15%;
-}
-.blok .blok-content .two{
-width: 33%;
-margin-top: 10%;
-margin-left: 3%;
-}
-.blok .blok-content .three{
-width: 33%;
-margin-top: 10%;
-margin-left: 2%;
-}
-.blok .blok-content .one1{
-width: 33%;
-margin-left: 7%;
-margin-top: 10%;
-}
-.blok .blok-content .two1{
-width: 33%;
-margin-left: 5%;
-margin-top: 10%;
-}
-.blok .blok-content .three1{
-width: 34%;
-margin-left: 5%;
-margin-top: 10%;
-}
-.blok .blok-content .middle{
-width: 50%;
-margin-top: -10%;
-}
-.blok .blok-content .middle1{
-width: 50%;
-margin-top: -5%;
-}
-.blok .blok-content .right{
-width: 100%;
-margin-top: -10%;
-margin-left: 15%;
-}
-.blok .blok-content .right .img{
-height: 400px;
-width: 400px;
-object-fit: cover;
-border-radius: 6px;
-}
-.blok .blok-content .right1{
-width: 100%;
-margin-top: 2%;
+
+.box select option {
+  padding: 30px;
 }
 
 }
 
-/* ----------------------------------------------- Phones ---------------------------------- */
+/* ----------------------------------------------- Large Phones ---------------------------------- */
 
-@media (max-width: 720px) and (min-width: 470px){
+@media (max-width: 720px) and (min-width: 420px){
 
   
   .max-width{
@@ -677,7 +860,7 @@ margin-top: 2%;
     margin: auto;
   }
   
-  .fre, .sys, .blk, .blk1, .fourier, .haar, .footer{
+  .fre, .sys{
   font-family: 'Poppins', sans-serif;
   }
   
@@ -714,41 +897,8 @@ margin-top: 2%;
     font-size: 40px;
     font-weight: 500;
     margin-top: 10%;
+    width: 100%;
     font-family: 'Ubuntu', sans-serif;
-  }
-  .fre .fre-content{
-    margin-top: 10%;
-  }
-  .fre .fre-content .left{
-  width: 100%;
-  margin-left: 50%;
-  margin-top: 15%;
-  }
-  .fre .fre-content .middle{
-  width: 50%;
-  margin-top: 0%;
-  margin-left: 40%;
-  }
-  .fre .fre-content .middle1{
-    width: 100%;
-    margin-left: -50%;
-    margin-top: -20%;
-  }
-  .fre .fre-content .right{
-  width: 100%;
-  margin-top: 30%;
-  margin-left: 10%;
-  }
-  .fre .fre-content .right1{
-    width: 100%;
-    margin-right: 10%;
-    margin-top: 10%;
-  }
-  .fre .fre-content .right .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
   }
   
   .sys{
@@ -849,11 +999,135 @@ margin-top: 2%;
   border-radius: 6px;
   }
 
+  .box1 {
+    position: relative;
+    margin-top: 100%;
+    margin-left: 55%;
+    margin-bottom: -40%;
+    transform: translate(-50%, -50%);
+    width: 130%;
+  }
+  
+  .box1 select {
+    background-color: #98CB3B;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border-style: solid;
+    border-width: 100px;
+    border-block-color: #176696;
+    border-block-start-color: #176696;
+    border-top-color: #176696;
+    border-color: #176696;
+    font-size: 20px;
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+  .box1::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: #176696;
+    background-color: #176696;
+    pointer-events: none;
+  }
+  
+  .box1:hover::before {
+    color: #176696;
+    background-color: #176696;
+  }
+  
+  .box1 select option {
+    padding: 30px;
+  }
+
+  .fill {
+    position: relative;
+    margin-left: 20%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+  }
+  .fill1 {
+    position: relative;
+    margin-left: 35%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    float: left;
+  }
+  .fill2 {
+    position: relative;
+    margin-left: 35%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    float: left;
+  }
+
+  .box {
+    position: relative;
+    margin-right: 20%;
+    margin-left: 25%;
+    margin-top: 40%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .box select {
+    background-color: #98CB3B;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+  }
+  
+  .box::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+  
+  .box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .box select option {
+    padding: 30px;
+  }
+
 }
 
 /* ------------------------------------- Small Phones ------------------------------------ */
 
-@media (max-width: 470px){
+@media (max-width: 420px){
 
   
   .max-width{
@@ -862,7 +1136,7 @@ margin-top: 2%;
     margin: auto;
   }
   
-  .fre, .sys, .blk, .blk1, .fourier, .haar, .footer{
+  .fre, .sys{
   font-family: 'Poppins', sans-serif;
   }
   
@@ -899,41 +1173,9 @@ margin-top: 2%;
     font-size: 30px;
     font-weight: 500;
     margin-top: 10%;
+    margin-left: -5%;
+    width: 80%;
     font-family: 'Ubuntu', sans-serif;
-  }
-  .fre .fre-content{
-    margin-top: 10%;
-  }
-  .fre .fre-content .left{
-  width: 100%;
-  margin-left: 50%;
-  margin-top: 15%;
-  }
-  .fre .fre-content .middle{
-  width: 50%;
-  margin-top: 0%;
-  margin-left: 40%;
-  }
-  .fre .fre-content .middle1{
-    width: 100%;
-    margin-left: -50%;
-    margin-top: -20%;
-  }
-  .fre .fre-content .right{
-  width: 100%;
-  margin-top: 30%;
-  margin-left: -10%;
-  }
-  .fre .fre-content .right1{
-    width: 100%;
-    margin-right: 10%;
-    margin-top: -10%;
-  }
-  .fre .fre-content .right .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
   }
   
   .sys{
@@ -1033,263 +1275,129 @@ margin-top: 2%;
   object-fit: cover;
   border-radius: 6px;
   }
-  
-  .blk{
-  display: flex;
-  color: #000000; /* Color of Name, and moving text in first page*/
-  background-size: cover;
-  background-attachment: fixed;
-  font-family: 'Ubuntu', sans-serif;
-  }
-  .blk .t{
-  position: relative;
-  text-align: center;
-  color: #000000;
-  font-size: 40px;
-  font-weight: 500;
-  margin-top: 0%;
-  font-family: 'Ubuntu', sans-serif;
-  }
-  .blk .blk-content{
-    width: 100%;
-  margin-top: 10%;
-  }
-  .blk .blk-content .left{
-  width: 50%;
-  margin-top: -5%;
-  margin-left: 10%;
-  }
-  .blk .blk-content .left1{
-  width: 50%;
-  margin-top: -20%;
-  margin-left: 10%;
-  }
-  .blk .blk-content .left .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
-  }
-  .blk .blk-content .middle{
-  width: 50%;
-  margin-top: 5%;
-  }
-  .blk .blk-content .middle1{
-  width: 50%;
-  margin-top: 25%;
-  }
-  .blk .blk-content .middle2{
-  width: 50%;
-  margin-top: 15%;
-  margin-bottom: -15%;
-  }
-  .blk .blk-content .middle .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
-  }
-  .blk .blk-content .right{
-  width: 100%;
-  margin-top: -35%;
-  margin-left: 20%;
-  }
-  .blk .blk-content .right1{
-  width: 100%;
-  margin-top: -35%;
-  }
-  .blk .blk-content .right2{
-  width: 100%;
-  margin-top: -20%;
-  }
-  .blk .blk-content .right .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
-  }
-  .blk .blk-content .right .input[type=text] {
-  width: 40%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
+
+  .box1 {
+    position: relative;
+    margin-top: 120%;
+    margin-left: 52%;
+    margin-bottom: -40%;
+    transform: translate(-50%, -50%);
+    width: 130%;
   }
   
-  .blk1{
-  display: flex;
-  color: #000000; /* Color of Name, and moving text in first page*/
-  background-size: cover;
-  background-attachment: fixed;
-  font-family: 'Ubuntu', sans-serif;
-  }
-  .blk1 .t{
-  position: relative;
-  text-align: center;
-  color: #000000;
-  font-size: 40px;
-  font-weight: 500;
-  margin-top: 0%;
-  font-family: 'Ubuntu', sans-serif;
-  width: 100%;
-  margin-top: 10%;
-  }
-  .blk1 .blk1-content{
+  .box1 select {
+    background-color: #98CB3B;
+    color: white;
+    padding: 12px;
     width: 100%;
-  }
-  .blk1 .blk1-content .left{
-  width: 50%;
-  margin-top: 10%;
-  margin-left: 10%;
-  }
-  .blk1 .blk1-content .left .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
-  }
-  .blk1 .blk1-content .middle{
-  width: 50%;
-  margin-top: 10%;
-  }
-  .blk1 .blk1-content .middle1{
-    width: 50%;
-    margin-top: 30%;
-    margin-bottom: -5%;
-  }
-  .blk1 .blk1-content .right{
-  width: 100%;
-  margin-top: -10%;
-  margin-left: 20%;
-  }
-  .blk1 .blk1-content .right .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
-  }
-  .blk1 .blk1-content .right1{
-    width: 100%;
-    margin-top: -30%;
-    margin-left: 10%;
-  }
-  .blk1 .blk1-content .right2{
-      width: 100%;
-      margin-top: -50%;
-      margin-left: 40%;
-  }
-  .blk1 .blk1-content .right1 .img{
-    height: 400px;
-    width: 400px;
-    object-fit: cover;
-    border-radius: 6px;
-  }
-  .blk1 .blk1-content .right .input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  }
-  .blk1 .blk1-content .right2 .input[type=text] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
+    border-style: solid;
+    border-width: 100px;
+    border-block-color: #176696;
+    border-block-start-color: #176696;
+    border-top-color: #176696;
+    border-color: #176696;
+    font-size: 20px;
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
   }
   
-  .blok{
-  display: flex;
-  color: #000000; /* Color of Name, and moving text in first page*/
-  background-size: cover;
-  background-attachment: fixed;
-  font-family: 'Ubuntu', sans-serif;
+  .box1::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: #176696;
+    background-color: #176696;
+    pointer-events: none;
   }
-  .blok .t{
-  position: relative;
-  text-align: center;
-  color: #000000;
-  font-size: 40px;
-  font-weight: 500;
-  margin-top: 0%;
-  font-family: 'Ubuntu', sans-serif;
-  width: 100%;
-  margin-top: 10%;
+  
+  .box1:hover::before {
+    color: #176696;
+    background-color: #176696;
   }
-  .blok .t1{
-  position: relative;
-  text-align: center;
-  color: #000000;
-  font-size: 20px;
-  font-weight: 250;
-  margin-top: 15%;
-  font-family: 'Ubuntu', sans-serif;
-  width: 100%;
+  
+  .box1 select option {
+    padding: 30px;
   }
-  .blok .blok-content{
-    margin-top: 10%;
-  margin-bottom: -10%;
+
+  .fill {
+    position: relative;
+    margin-left: 20%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
   }
-  .blok .blok-content .left{
-  width: 50%;
-  margin-top: 10%;
+  .fill1 {
+    position: relative;
+    margin-left: 30%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    float: left;
   }
-  .blok .blok-content .left .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
+  .fill2 {
+    position: relative;
+    margin-left: 30%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    float: left;
   }
-  .blok .blok-content .one{
-  width: 33%;
-  margin-top: 10%;
-  margin-left: 15%;
+
+  .box {
+    position: relative;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 40%;
+    transform: translate(-50%, -50%);
   }
-  .blok .blok-content .two{
-  width: 33%;
-  margin-top: 10%;
-  margin-left: 3%;
+  
+  .box select {
+    background-color: #98CB3B;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    font-size: 20px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
   }
-  .blok .blok-content .three{
-  width: 33%;
-  margin-top: 10%;
-  margin-left: 2%;
+  
+  .box::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
   }
-  .blok .blok-content .one1{
-  width: 33%;
-  margin-left: 7%;
-  margin-top: 10%;
+  
+  .box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
   }
-  .blok .blok-content .two1{
-  width: 33%;
-  margin-left: 5%;
-  margin-top: 10%;
-  }
-  .blok .blok-content .three1{
-  width: 34%;
-  margin-left: 5%;
-  margin-top: 10%;
-  }
-  .blok .blok-content .middle{
-  width: 50%;
-  margin-top: -10%;
-  }
-  .blok .blok-content .middle1{
-  width: 50%;
-  margin-top: -5%;
-  }
-  .blok .blok-content .right{
-  width: 100%;
-  margin-top: -10%;
-  margin-left: 15%;
-  }
-  .blok .blok-content .right .img{
-  height: 400px;
-  width: 400px;
-  object-fit: cover;
-  border-radius: 6px;
-  }
-  .blok .blok-content .right1{
-  width: 100%;
-  margin-top: 2%;
+  
+  .box select option {
+    padding: 30px;
   }
   
   }
@@ -1311,91 +1419,6 @@ section{
   padding: 0 10px;
   margin: auto;
 }
-
-/* ------------------------------------------ Drop Down ------------------------------------------------------- */
-.box {
-  position: relative;
-  margin-left: -20%;
-  margin-right: 20%;
-  margin-top: -10%;
-  transform: translate(-50%, -50%);
-}
-
-.box select {
-  background-color: #98CB3B;
-  color: white;
-  padding: 12px;
-  width: 100%;
-  border: none;
-  font-size: 20px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-  -webkit-appearance: button;
-  appearance: button;
-  outline: none;
-}
-
-.box::before {
-  content: "\f13a";
-  font-family: 'Ubuntu', sans-serif;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  text-align: center;
-  font-size: 28px;
-  line-height: 45px;
-  color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.1);
-  pointer-events: none;
-}
-
-.box:hover::before {
-  color: rgba(255, 255, 255, 0.6);
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.box select option {
-  padding: 30px;
-}
-/* --------------------------------------------- Drop Down END ---------------------------------------------------------*/
-
-.fill {
-  position: relative;
-  margin-left: 20%;
-  margin-top: 20%;
-  top: 0%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-}
-.fill1 {
-  position: relative;
-  margin-left: -20%;
-  margin-top: 20%;
-  top: 0%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  float: left;
-}
-.fill2 {
-  position: relative;
-  margin-left: -20%;
-  margin-top: 5%;
-  top: 0%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  float: left;
-}
-.fill3 {
-  position: relative;
-  margin-left: 40%;
-  margin-top: 10%;
-  top: 0%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-  float: left;
-}
-
 
 /* ----------------------------------------- Plot Button -----------------------------------------------------*/
 
@@ -1490,65 +1513,12 @@ section{
   transform: translate(0, 5%);
 }
 
-/* ------------------------------- LTI Box ------------------------------------------- */
-
-.box1 {
-  position: relative;
-  /*margin-left: 20%;*/
-  margin-top: 50%;
-  margin-bottom: -50%;
-  transform: translate(-50%, -50%);
-  width: 130%;
-}
-
-.box1 select {
-  background-color: #98CB3B;
-  color: white;
-  padding: 12px;
-  width: 100%;
-  border-style: solid;
-  border-width: 100px;
-  border-block-color: #176696;
-  border-block-start-color: #176696;
-  border-top-color: #176696;
-  border-color: #176696;
-  font-size: 20px;
-  -webkit-appearance: button;
-  appearance: button;
-  outline: none;
-}
-
-.box1::before {
-  content: "\f13a";
-  font-family: 'Ubuntu', sans-serif;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 100%;
-  text-align: center;
-  font-size: 28px;
-  line-height: 45px;
-  color: #176696;
-  background-color: #176696;
-  pointer-events: none;
-}
-
-.box1:hover::before {
-  color: #176696;
-  background-color: #176696;
-}
-
-.box1 select option {
-  padding: 30px;
-}
-
 /* ------------------------------- LTI Box 2 ------------------------------------------- */
 
 .box2 {
   position: relative;
   /*margin-left: 20%;*/
-  margin-top: 40%;
+  margin-top: 45%;
   margin-bottom: 0%;
   margin-left: 40%;
   transform: translate(-50%, -50%);
@@ -1786,12 +1756,10 @@ section{
 /* Style the buttons inside the tab */
 .tab button {
   background-color: inherit;
-  float: left;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
-  transition: 0.1s;
   font-size: 17px;
 }
 

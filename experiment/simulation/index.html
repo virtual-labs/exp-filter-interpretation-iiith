@@ -3,6 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="./css/main.css">
 	<script src="https://unpkg.com/mathjs@11.2.1/lib/browser/math.js"></script>
 	<script src="https://cdn.plot.ly/plotly-1.35.2.min.js"></script>
@@ -33,7 +34,7 @@
 		<section class="fre" id="frqe">
 			<div class="max-width">
 				<h2 class="title">Frequency Response of Few Systems</h2>
-				<div class="columns is-centered" style="margin-bottom: -5%;">
+				<div class="columns is-centered">
 					<div class="v-collapsible-instruction-container v-instruction-container">
 						<div class="v-collapsible is-size-5">Instructions</div>
 						<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
@@ -81,49 +82,53 @@
 						</div>
 					</div>
 				</div>
-				<div class="fre-content">
-					<div class="column left">
-						<div class="box">
-							<select id="imp-names">
-							  <option value="1">Unit Impulse</option>
-							</select>
-						</div>
-						<div class="fill1"> Parameter 1: &emsp; <input type=number id="fre1" value=0.3 step=0.5> </div>
-						<div class="fill2"> Parameter 2: &emsp; <input type=number id="fre2" value=0.5 step=0.5> </div>
+
+				<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+			style="margin-top:-1.5%">
+			<div class="column is-3-desktop is-4-tablet is-10-mobile">
+				<div class="box-question">
+					<div class="box">
+						<select id="imp-names">
+						  <option value="1">Unit Impulse</option>
+						</select>
 					</div>
-					<div class="column middle">
-						<div class="box1">
-							<select id="sig-names">
-							  <option value="1">Low Pass</option>
-							  <option value="2">High Pass</option>
-							  <option value="3">Band Pass</option>
-							  <option value="4">Band Stop</option>
-							  <option value="5">Scalar</option>
-							  <option value="6">Delay</option>
-							</select>
-						</div>
-						
+					<div class="fill1"> Parameter 1: &emsp; <input type=number id="fre1" value=0.3 step=0.5> </div>
+					<div class="fill2"> Parameter 2: &emsp; <input type=number id="fre2" value=0.5 step=0.5> </div>
+				</div>
+			</div>
+
+			<div class="column is-3-desktop is-2-tablet is-10-mobile">
+				<div class="box-question">
+					<div class="box1">
+						<select id="sig-names">
+						  <option value="1">Low Pass</option>
+						  <option value="2">High Pass</option>
+						  <option value="3">Band Pass</option>
+						  <option value="4">Band Stop</option>
+						  <option value="5">Scalar</option>
+						  <option value="6">Delay</option>
+						</select>
 					</div>
-					<div class="column right">
+					<button class="button1" id="jsbutton" role="button" onClick="freqResp()">Check</button>
+				</div>
+			</div>
+
+			<div class="column is-3-desktop is-10-tablet is-5-mobile">
+				<div class="box-question">
+					<div class="v-datalist-title">Observations</div>
+					<div id="observations1">
 						<div id='figure1'></div>
 						<div id='figure2'></div>
 					</div>
 				</div>
-				<div class="fre-content">
-					<div class="column left">
-					</div>
-					<div class="column middle1">
-						<button class="button1" id="jsbutton" role="button" onClick="freqResp()">Check</button>
-					</div>
-				</div>
-				<div class="column right">
-				</div>
 			</div>
+		</div>
+
 		</section>
 	</div>
 
 	<div id="SYS" class="tabcontent">
-		<section class="sys" id="system">
+		<section class="fre" id="system">
 			<div class="max-width">
 				<h2 class="title">Working of LTI Systems</h2>
 				<div class="columns is-centered">
@@ -175,48 +180,55 @@
 						</div>
 					</div>
 				</div>
-				<div class="sys-content">
-					<div class="column left">
-						<div class="box">
-							<select id="imp-names2">
-								<option value="1">Sin(0.3*pi*n)</option>
-								<option value="2">Cos(0.3*pi*n))</option>
-								<option value="3">Ramp</option>
-								<option value="4">Pulse</option>
-							</select>
-						</div>
-						<div class="fill1"> Parameter 1: &emsp; <input type=number id="cutoff1" value=0.3 step=0.5> </div>
-						<div class="fill2"> Parameter 2: &emsp; <input type=number id="cutoff2" value=0.5 step=0.5> </div>
+
+				<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+			style="margin-top:-1.5%">
+			<div class="column is-3-desktop is-4-tablet is-10-mobile">
+				<div class="box-question">
+					<div class="box">
+						<select id="imp-names2">
+							<option value="1">Sin(0.3*pi*n)</option>
+							<option value="2">Cos(0.3*pi*n)</option>
+							<option value="3">Ramp</option>
+							<option value="4">Pulse</option>
+						</select>
 					</div>
-					<div class="column middle">
-						<div class="box1">
-							<select id="sig-names2">
-								<option value="1">Low Pass</option>
-								<option value="2">High Pass</option>
-								<option value="3">Band Pass</option>
-								<option value="4">Band Stop</option>
-							</select>
-						</div>
+					<div class="fill1"> Parameter 1: &emsp; <input type=number id="cutoff1" value=0.3 step=0.5> </div>
+					<div class="fill2"> Parameter 2: &emsp; <input type=number id="cutoff2" value=0.5 step=0.5> </div>
+				</div>
+			</div>
+
+			<div class="column is-3-desktop is-2-tablet is-10-mobile">
+				<div class="box-question">
+					<div class="box1">
+						<select id="sig-names2">
+							<option value="1">Low Pass</option>
+							<option value="2">High Pass</option>
+							<option value="3">Band Pass</option>
+							<option value="4">Band Stop</option>
+						</select>
 					</div>
-					<div class="column right">
+					<button class="button1" id="jsbutton2" role="button" onClick="syst()">Check</button>
+				</div>
+			</div>
+
+			<div class="column is-3-desktop is-10-tablet is-5-mobile">
+				<div class="box-question">
+					<div class="v-datalist-title">Observations</div>
+					<div id="observations1">
 						<div id='figure3'></div>
 						<div id='figure4'></div>
 						<div id='figure5'></div>
 					</div>
 				</div>
-				<div class="sys-content">
-					<div class="column left"></div>
-					<div class="column middle1">
-						<button class="button1" id="jsbutton2" role="button" onClick="syst()">Check</button>
-					</div>
-					<div class="column right"></div>
-				</div>
 			</div>
+		</div>
+
 		</section>
 	</div>
 
 	<div id="MVG" class="tabcontent">
-		<section class="mva" id="average">
+		<section class="fre" id="average">
 			<div class="max-width">
 				<h2 class="title">Choose the system which cannot be used</h2>
 				<div class="columns is-centered">
@@ -238,43 +250,51 @@
 						</div>
 					</div>
 				</div>
-				<div class="mva-content">
-					<div class="column left">
-						<div id='figure6'></div>
+
+				<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+			style="margin-top:-1.5%">
+			<div class="column is-6-desktop is-6-tablet is-10-mobile">
+				<div class="box-question">
+					<div id='figure6'></div>
+				</div>
+			</div>
+
+			<div class="column is-3-desktop is-4-tablet is-10-mobile">
+				<div class="box-question">
+					<div class="box2">
+						<select id="sig-names3">
+						  <option value="1">Low Pass</option>
+						  <option value="2">High Pass</option>
+						  <option value="3">Band Pass</option>
+						  <option value="4">Band Stop</option>
+						</select>
 					</div>
-					<div class="column middle">
-						<div class="box2">
-							<select id="sig-names3">
-							  <option value="1">Low Pass</option>
-							  <option value="2">High Pass</option>
-							  <option value="3">Band Pass</option>
-							  <option value="4">Band Stop</option>
-							</select>
-						</div>
-					</div>
-					<div class="column right">
+					<button class="button1" id="jsbutton9" role="button" onClick="mavg()">Check</button>
+				</div>
+			</div>
+
+			<div class="column is-3-desktop is-6-tablet is-5-mobile">
+				<div class="box-question">
+					<div class="v-datalist-title">Observations</div>
+					<div id="observations1">
 						<div id='figure7'></div>
 					</div>
 				</div>
-				<div class="mva-content">
-					<div class="column left"></div>
-					<div class="column middle1">
-						<button class="button1" id="jsbutton9" role="button" onClick="mavg()">Check</button>
-					</div>
-					<div class="column right"></div>
-				</div>
-				<div class="v-datalist-container components-list" style="margin-top: 10%;">
-					<div class="v-datalist-title">Observations</div>
-					<div class="v-datalist-row">
-						<div id="result1"></div>
-					</div>
-				</div>
 			</div>
+		</div>
+
+		<div class="v-datalist-container components-list" style="margin-top: 10%;">
+			<div class="v-datalist-title">Observations</div>
+			<div class="v-datalist-row">
+				<div id="result1"></div>
+			</div>
+		</div>
+
 		</section>
 	</div>
 
 	<div id="BLK1" class="tabcontent">
-		<section class="mva" id="black">
+		<section class="fre" id="black">
 			<div class="max-width">
 				<h2 class="title">Choose the system and Parameter</h2>
 				<div class="columns is-centered">
@@ -299,41 +319,48 @@
 						</div>
 					</div>
 				</div>
-				<div class="mva-content">
-					<div class="column left">
-						<div id='figure8'></div>
+
+				<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start"
+			style="margin-top:-1.5%">
+			<div class="column is-6-desktop is-6-tablet is-10-mobile">
+				<div class="box-question">
+					<div id='figure8'></div>
+					<div class="fill1"> Parameter 1: &emsp; <input type=number id="cutoff3" value=0.3 step=0.5> </div>
+					<div class="fill2"> Parameter 2: &emsp; <input type=number id="cutoff4" value=0.5 step=0.5> </div>
+				</div>
+			</div>
+
+			<div class="column is-3-desktop is-4-tablet is-10-mobile">
+				<div class="box-question">
+					<div class="box1">
+						<select id="sig-names4">
+						  <option value="1">Low Pass</option>
+						  <option value="2">High Pass</option>
+						  <option value="3">Band Pass</option>
+						  <option value="4">Band Stop</option>
+						</select>
 					</div>
-					<div class="column middle">
-						<div class="box2">
-							<select id="sig-names4">
-							  <option value="1">Low Pass</option>
-							  <option value="2">High Pass</option>
-							  <option value="3">Band Pass</option>
-							  <option value="4">Band Stop</option>
-							</select>
-						</div>
-					</div>
-					<div class="column right">
+					<button class="button1" id="jsbutton6" role="button" onClick="mavg1()">Check</button>
+				</div>
+			</div>
+
+			<div class="column is-3-desktop is-6-tablet is-5-mobile">
+				<div class="box-question">
+					<div class="v-datalist-title">Observations</div>
+					<div id="observations1">
 						<div id='figure9'></div>
 					</div>
 				</div>
-				<div class="mva-content">
-					<div class="column left1">
-						<div class="fill1"> Parameter 1: &emsp; <input type=number id="cutoff3" value=0.3 step=0.5> </div>
-						<div class="fill2"> Parameter 2: &emsp; <input type=number id="cutoff4" value=0.5 step=0.5> </div>
-					</div>
-					<div class="column middle2">
-						<button class="button1" id="jsbutton6" role="button" onClick="mavg1()">Check</button>
-					</div>
-					<div class="column right"></div>
-				</div>
-				<div class="v-datalist-container components-list" style="margin-top: 10%;">
-					<div class="v-datalist-title">Observations</div>
-					<div class="v-datalist-row">
-						<div id="result2"></div>
-					</div>
-				</div>
 			</div>
+		</div>
+
+		<div class="v-datalist-container components-list" style="margin-top: 10%;">
+			<div class="v-datalist-title">Observations</div>
+			<div class="v-datalist-row">
+				<div id="result2"></div>
+			</div>
+		</div>
+
 		</section>
 	</div>
 
