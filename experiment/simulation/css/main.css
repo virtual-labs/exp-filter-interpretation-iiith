@@ -197,6 +197,10 @@ section .title{
   padding: 30px;
 }
 
+.figureLast{
+  margin-left: -50%;
+}
+
 }
 
 /* ----------------------------------------- Big Tabs ------------------------------------------ */
@@ -228,6 +232,7 @@ section .title{
   font-size: 40px;
   font-weight: 500;
   margin-top: 10%;
+  width: 80%;
   font-family: 'Ubuntu', sans-serif;
   }
   
@@ -371,10 +376,14 @@ section .title{
   .box select option {
     padding: 30px;
   }
+
+  .figureLast{
+    margin-left: -30%;
+  }
   
   }
 
-/* ----------------------------------------- Tabs ------------------------------------------ */
+/* ----------------------------------------- Small Tabs ------------------------------------------ */
 
 @media (max-width: 768px) and (min-width: 720px){
 
@@ -545,6 +554,10 @@ font-family: 'Ubuntu', sans-serif;
 
 .box select option {
   padding: 30px;
+}
+
+.figureLast{
+  margin-left: 0%;
 }
 
 }
@@ -724,6 +737,10 @@ font-family: 'Ubuntu', sans-serif;
     padding: 30px;
   }
 
+  .figureLast{
+    margin-left: 0%;
+  }
+
 }
 
 /* ------------------------------------- Small Phones ------------------------------------ */
@@ -900,6 +917,10 @@ font-family: 'Ubuntu', sans-serif;
   
   .box select option {
     padding: 30px;
+  }
+
+  .figureLast{
+    margin-left: 0%;
   }
   
   }
