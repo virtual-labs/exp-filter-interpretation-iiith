@@ -1431,8 +1431,13 @@ section{
 
 /* ------------------------------------------ Table ------------------------------------ */
 
-table,th,td,tr {
+table,td,tr {
         padding: 10%;
         border: 3px solid black;
         border-collapse: collapse;
+}
+
+th{
+  border: 3px solid black;
+  background-color: #AAA;
 }
