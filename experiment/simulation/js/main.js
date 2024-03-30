@@ -10,6 +10,23 @@ function openPart(evt, name) {
     }
     document.getElementById(name).style.display = "block";
     evt.currentTarget.className += " active";
+
+    if(!name.localeCompare('FR'))
+    {
+        freqResp();
+    }
+    else if(!name.localeCompare('SYS'))
+    {
+        syst();
+    }
+    else if(!name.localeCompare('MVG'))
+    {
+        mInit();
+    }
+    else
+    {
+        qInit();
+    }
 }
 
 var k;
@@ -937,10 +954,6 @@ function makeArr(startValue, stopValue, cardinality) {
 
 function startup()
 {
-    freqResp();
-    syst();
-    mInit();
-    qInit();
     document.getElementById("default").click();
 }
 
