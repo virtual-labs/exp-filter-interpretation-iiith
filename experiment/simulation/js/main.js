@@ -235,17 +235,7 @@ function fourier(waveform){
         var sum = math.complex(0,0);
         for(var n=0; n<N; n++)
         {
-            sum = math.add(sum,(math.multiply(waveform[n],math.complex(Math.cos(2*Math.PI*k*n/N),-Math.sin(2*Math.PI*k*n/N)))));
-        }
-        if(math.re(sum)<1e-10)
-        {
-            var sum1 = math.complex(0,math.im(sum));
-            sum = sum1;
-        }
-        if(math.im(sum)<1e-10)
-        {
-            var sum1 = math.complex(math.re(sum),0);
-            sum = sum1;
+            sum = math.add(sum, math.multiply(waveform[n], math.complex(Math.cos(2*Math.PI*k*n/N), -Math.sin(2*Math.PI*k*n/N))));
         }
         ft.push(sum);
     }
@@ -261,23 +251,15 @@ function invFourier(waveform){
         var sum = math.complex(0,0);
         for(var n=0; n<N; n++)
         {
-            sum = math.add(sum,math.complex(math.re(waveform[n])*Math.cos(2*Math.PI*k*n/N)/N - math.im(waveform[n])*Math.sin(2*Math.PI*k*n/N)/N,math.re(waveform[n])*Math.sin(2*Math.PI*k*n/N)/N + math.im(waveform[n])*Math.cos(2*Math.PI*k*n/N)/N));
-        }
-        if(math.re(sum)<1e-10)
-        {
-            var sum1 = math.complex(0,math.im(sum));
-            sum = sum1;
-        }
-        if(math.im(sum)<1e-10)
-        {
-            var sum1 = math.complex(math.re(sum),0);
-            sum = sum1;
+            sum = math.add(sum, math.complex(
+                math.re(waveform[n]) * Math.cos(2*Math.PI*k*n/N) / N - math.im(waveform[n]) * Math.sin(2*Math.PI*k*n/N) / N,
+                math.re(waveform[n]) * Math.sin(2*Math.PI*k*n/N) / N + math.im(waveform[n]) * Math.cos(2*Math.PI*k*n/N) / N
+            ));
         }
         ft.push(sum);
     }
     return ft;
 }
-
 function shift(signal){
     var N = signal.length;
     var cut = parseInt(N/2);
@@ -367,10 +349,13 @@ function syst(){
         }
     }
 
-    var transOr = fourier(sigValues);
+    // Keep the original signal for calculations
+    var originalSigValues = [...sigValues];
+
+    var transOr = fourier(originalSigValues);
     var trans = shift(transOr);
     var wValues = [];
-    var N = sigValues.length;
+    var N = originalSigValues.length;
     var ampSpec = [];
     var phSpec = [];
     wValues = makeArr(-Math.PI,Math.PI,N);
@@ -380,11 +365,15 @@ function syst(){
         phSpec.push(math.atan2(math.im(trans[i]),math.re(trans[i])));
     }
 
+    // Normalize amplitude spectrum
+    var maxAmpSpec = Math.max(...ampSpec.map(Math.abs));
+    ampSpec = ampSpec.map(value => value / maxAmpSpec);
+
     var filValues = [];
     var filValues1 = [];
     if(sel1==2)
     {
-        for (var i=0; i<=200; i++)
+        for (var i=0; i<N; i++)
         {
             if(Math.abs(wValues[i])<lc*Math.PI)
             {
@@ -398,7 +387,7 @@ function syst(){
     }
     else if(sel1==1)
     {
-        for (var i=0; i<=200; i++)
+        for (var i=0; i<N; i++)
         {
             if(Math.abs(wValues[i])<lc*Math.PI)
             {
@@ -418,7 +407,7 @@ function syst(){
             hc = lc;
             lc = temp;
         }
-        for (var i=0; i<=200; i++)
+        for (var i=0; i<N; i++)
         {
             if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
             {
@@ -438,7 +427,7 @@ function syst(){
             hc = lc;
             lc = temp;
         }
-        for (var i=0; i<=1000; i++)
+        for (var i=0; i<N; i++)
         {
             if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
             {
@@ -453,7 +442,7 @@ function syst(){
 
     if(sel1==1)
     {
-        for (var i=0; i<=200; i++)
+        for (var i=0; i<N; i++)
         {
             if(Math.abs(wValues[i])<lc*Math.PI)
             {
@@ -467,7 +456,7 @@ function syst(){
     }
     else if(sel1==2)
     {
-        for (var i=0; i<=200; i++)
+        for (var i=0; i<N; i++)
         {
             if(Math.abs(wValues[i])<lc*Math.PI)
             {
@@ -487,7 +476,7 @@ function syst(){
             hc = lc;
             lc = temp;
         }
-        for (var i=0; i<=200; i++)
+        for (var i=0; i<N; i++)
         {
             if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
             {
@@ -507,7 +496,7 @@ function syst(){
             hc = lc;
             lc = temp;
         }
-        for (var i=0; i<=1000; i++)
+        for (var i=0; i<N; i++)
         {
             if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
             {
@@ -520,8 +509,7 @@ function syst(){
         }
     }
 
-    var outValues = math.dotMultiply(filValues,transOr);
-    var outValues = shift(outValues);
+    var outValues = math.dotMultiply(filValues1,trans);
     var ampSpecOut = [];
     var phSpecOut = [];
     for(var i=0; i<N; i++)
@@ -529,6 +517,10 @@ function syst(){
         ampSpecOut.push(math.sqrt(math.pow(math.re(outValues[i]),2)+math.pow(math.im(outValues[i]),2)));
         phSpecOut.push(math.atan2(math.im(outValues[i]),math.re(outValues[i])));
     }
+
+    // Normalize filtered amplitude spectrum
+    var maxAmpSpecOut = Math.max(...ampSpecOut.map(Math.abs));
+    ampSpecOut = ampSpecOut.map(value => value / maxAmpSpecOut);
 
     var sigValuesOut = invFourier(outValues);
     var sigRealOut = [];
@@ -539,34 +531,48 @@ function syst(){
 
     sigRealOut = shift(sigRealOut); 
 
+    // Normalize filtered signal values
+    var maxSigRealOut = Math.max(...sigRealOut.map(Math.abs));
+    sigRealOut = sigRealOut.map(value => value / maxSigRealOut);
+
+    // Normalize the original signal values for plotting
+    var maxSigValue = Math.max(...originalSigValues.map(Math.abs));
+    var normalizedSigValues = originalSigValues.map(value => value / maxSigValue);
+
     var trace1 = {
         x: wValues,
         y: ampSpec,
         type: 'scatter',
-        mode: 'line'
+        mode: 'line',
+        name: 'Original Spectrum'
     };
     var trace2 = {
         x: wValues,
         y: filValues1,
         type: 'scatter',
-        mode: 'line'
+        mode: 'line',
+        name: 'Filter'
     };
     var trace3 = {
         x: wValues,
         y: ampSpecOut,
         type: 'scatter',
-        mode: 'line'
+        mode: 'line',
+        name: 'Filtered Spectrum'
     };
     var trace4 = {
         x: xValues,
-        y: sigValues,
+        y: normalizedSigValues,
         type: 'scatter',
-        mode: 'line'
+        mode: 'line',
+        name: 'Original Signal'
     };
     var trace5 = {
         x: xValues,
         y: sigRealOut,
-        mode: 'line'
+        type: 'scatter',
+        mode: 'line',
+        name: 'Filtered Signal'
     };
     var data1 = [trace1,trace2];
     var data2 = [trace3];
@@ -582,7 +588,7 @@ function syst(){
         yaxis: {
             title: 'Magnitude'
         },
-        showlegend: false
+        showlegend: true
     };
 
     var layout2 = {
@@ -593,7 +599,7 @@ function syst(){
         yaxis: {
             title: 'Amplitude'
         },
-        showlegend: false
+        showlegend: true
     };
       
     Plotly.newPlot('figure3', data1, layout1, config);
@@ -652,7 +658,6 @@ function syst(){
 
     Plotly.relayout('figure5', update);
 }
-
 // ------------------------------------------ Quiz 1 ----------------------------------------------------------
 
 function mInit(){
