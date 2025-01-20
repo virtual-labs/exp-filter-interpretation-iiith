@@ -287,7 +287,6 @@ function syst(){
     am = 1;
     freq = 0.3;
     var sigValues = [];
-    var sigValues1 = [];
     var yValues = [];
 
     if(sel==1)
@@ -353,16 +352,13 @@ function syst(){
     var originalSigValues = [...sigValues];
 
     var transOr = fourier(originalSigValues);
-    var trans = shift(transOr);
-    var wValues = [];
-    var N = originalSigValues.length;
+    var wValues = makeArr(-Math.PI,Math.PI,transOr.length);
     var ampSpec = [];
     var phSpec = [];
-    wValues = makeArr(-Math.PI,Math.PI,N);
-    for(var i=0; i<N; i++)
+    for(var i=0; i<transOr.length; i++)
     {
-        ampSpec.push(math.sqrt(math.pow(math.re(trans[i]),2)+math.pow(math.im(trans[i]),2)));
-        phSpec.push(math.atan2(math.im(trans[i]),math.re(trans[i])));
+        ampSpec.push(math.sqrt(math.pow(math.re(transOr[i]),2)+math.pow(math.im(transOr[i]),2)));
+        phSpec.push(math.atan2(math.im(transOr[i]),math.re(transOr[i])));
     }
 
     // Normalize amplitude spectrum
@@ -370,10 +366,9 @@ function syst(){
     ampSpec = ampSpec.map(value => value / maxAmpSpec);
 
     var filValues = [];
-    var filValues1 = [];
     if(sel1==2)
     {
-        for (var i=0; i<N; i++)
+        for (var i=0; i<wValues.length; i++)
         {
             if(Math.abs(wValues[i])<lc*Math.PI)
             {
@@ -387,7 +382,7 @@ function syst(){
     }
     else if(sel1==1)
     {
-        for (var i=0; i<N; i++)
+        for (var i=0; i<wValues.length; i++)
         {
             if(Math.abs(wValues[i])<lc*Math.PI)
             {
@@ -407,7 +402,7 @@ function syst(){
             hc = lc;
             lc = temp;
         }
-        for (var i=0; i<N; i++)
+        for (var i=0; i<wValues.length; i++)
         {
             if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
             {
@@ -427,7 +422,7 @@ function syst(){
             hc = lc;
             lc = temp;
         }
-        for (var i=0; i<N; i++)
+        for (var i=0; i<wValues.length; i++)
         {
             if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
             {
@@ -440,143 +435,67 @@ function syst(){
         }
     }
 
-    if(sel1==1)
-    {
-        for (var i=0; i<N; i++)
-        {
-            if(Math.abs(wValues[i])<lc*Math.PI)
-            {
-                filValues1.push(1);
-            }
-            else
-            {
-                filValues1.push(0);
-            }
-        }
-    }
-    else if(sel1==2)
-    {
-        for (var i=0; i<N; i++)
-        {
-            if(Math.abs(wValues[i])<lc*Math.PI)
-            {
-                filValues1.push(0);
-            }
-            else
-            {
-                filValues1.push(1);
-            }
-        }
-    }
-    else if(sel1==3)
-    {
-        if(lc>hc)
-        {
-            var temp = hc;
-            hc = lc;
-            lc = temp;
-        }
-        for (var i=0; i<N; i++)
-        {
-            if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
-            {
-                filValues1.push(1);
-            }
-            else
-            {
-                filValues1.push(0);
-            }
-        }
-    }
-    else
-    {
-        if(lc>hc)
-        {
-            var temp = hc;
-            hc = lc;
-            lc = temp;
-        }
-        for (var i=0; i<N; i++)
-        {
-            if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
-            {
-                filValues1.push(0);
-            }
-            else
-            {
-                filValues1.push(1);
-            }
-        }
-    }
-
-    var outValues = math.dotMultiply(filValues1,trans);
+    var outValues = math.dotMultiply(filValues, transOr);
     var ampSpecOut = [];
     var phSpecOut = [];
-    for(var i=0; i<N; i++)
+    for(var i=0; i<outValues.length; i++)
     {
         ampSpecOut.push(math.sqrt(math.pow(math.re(outValues[i]),2)+math.pow(math.im(outValues[i]),2)));
         phSpecOut.push(math.atan2(math.im(outValues[i]),math.re(outValues[i])));
     }
 
-    // Normalize filtered amplitude spectrum
-    var maxAmpSpecOut = Math.max(...ampSpecOut.map(Math.abs));
-    ampSpecOut = ampSpecOut.map(value => value / maxAmpSpecOut);
-
     var sigValuesOut = invFourier(outValues);
     var sigRealOut = [];
-    for(var i=0; i<N; i++)
+    for(var i=0; i<sigValuesOut.length; i++)
     {
         sigRealOut.push(math.re(sigValuesOut[i]));
     }
-
-    sigRealOut = shift(sigRealOut); 
-
-    // Normalize filtered signal values
-    var maxSigRealOut = Math.max(...sigRealOut.map(Math.abs));
-    sigRealOut = sigRealOut.map(value => value / maxSigRealOut);
 
     // Normalize the original signal values for plotting
     var maxSigValue = Math.max(...originalSigValues.map(Math.abs));
     var normalizedSigValues = originalSigValues.map(value => value / maxSigValue);
 
+
+
+
     var trace1 = {
         x: wValues,
-        y: ampSpec,
+        y: shift(ampSpec),
         type: 'scatter',
-        mode: 'line',
+        mode: 'lines',
         name: 'Original Spectrum'
     };
     var trace2 = {
         x: wValues,
-        y: filValues1,
+        y: shift(filValues),
         type: 'scatter',
-        mode: 'line',
+        mode: 'lines',
         name: 'Filter'
     };
     var trace3 = {
         x: wValues,
-        y: ampSpecOut,
+        y: shift(ampSpecOut),
         type: 'scatter',
-        mode: 'line',
+        mode: 'lines',
         name: 'Filtered Spectrum'
     };
     var trace4 = {
         x: xValues,
         y: normalizedSigValues,
         type: 'scatter',
-        mode: 'line',
+        mode: 'lines',
         name: 'Original Signal'
     };
     var trace5 = {
         x: xValues,
         y: sigRealOut,
         type: 'scatter',
-        mode: 'line',
+        mode: 'lines',
         name: 'Filtered Signal'
     };
-    var data1 = [trace1,trace2];
+    var data1 = [trace1, trace2];
     var data2 = [trace3];
-    var data3 = [trace4,trace5];
+    var data3 = [trace4, trace5];
 
     var config = {responsive: true}
 
@@ -604,58 +523,14 @@ function syst(){
       
     Plotly.newPlot('figure3', data1, layout1, config);
     
-    if(screen.width < 769)
-    {
-        var update = {
-            width: 0.9*screen.width,
-            height: 400
-        };
-    }
-    else
-    {
-        var update = {
-            width: 500,
-            height: 400
-        };
-    }
-
+    var update = {
+        width: screen.width < 769 ? 0.9 * screen.width : 500,
+        height: 400
+    };
     Plotly.relayout('figure3', update);
     Plotly.newPlot('figure4', data2, layout1, config);
-    
-    if(screen.width < 769)
-    {
-        var update = {
-            width: 0.9*screen.width,
-            height: 400
-        };
-    }
-    else
-    {
-        var update = {
-            width: 500,
-            height: 400
-        };
-    }
-
     Plotly.relayout('figure4', update);
-
     Plotly.newPlot('figure5', data3, layout2, config);
-    
-    if(screen.width < 769)
-    {
-        var update = {
-            width: 0.9*screen.width,
-            height: 400
-        };
-    }
-    else
-    {
-        var update = {
-            width: 500,
-            height: 400
-        };
-    }
-
     Plotly.relayout('figure5', update);
 }
 // ------------------------------------------ Quiz 1 ----------------------------------------------------------
