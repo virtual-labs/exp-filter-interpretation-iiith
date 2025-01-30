@@ -454,7 +454,7 @@ function syst(){
     // Normalize the original signal values for plotting
     var maxSigValue = Math.max(...originalSigValues.map(Math.abs));
     var normalizedSigValues = originalSigValues.map(value => value / maxSigValue);
-    var normalizedSpectrumValue = ampSpecOut.map(value => value / maxSigValue);
+    var normalizedSpectrumValue = ampSpecOut.map(value => value / maxAmpSpec);
 
 
 
