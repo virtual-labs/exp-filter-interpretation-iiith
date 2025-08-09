@@ -2,34 +2,52 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "The signal $x[n]=1+\\cos (n)+\\cos (\\pi n)$ is given as input to a high pass filter with a cut-off frequency of 2. Select the correct statement from the following:\n a: Both $x[n]$ and $y[n]$ are periodic\n b: $x[n]$ is periodic but $y[n]$ is not\n c: $y[n]$ is periodic but $x[n]$ is not\n d: Neither $x[n]$ or $y[n]$ are periodic",
+      "question": "The signal $x[n]=1+\\cos (n)+\\cos (\\pi n)$ is given as input to a high pass filter with a cut-off frequency of 2. Select the correct statement from the following:",
+      "options": [
+        "Both $x[n]$ and $y[n]$ are periodic",
+        "$x[n]$ is periodic but $y[n]$ is not",
+        "$y[n]$ is periodic but $x[n]$ is not",
+        "Neither $x[n]$ or $y[n]$ are periodic"
+      ],
       "answers": {
-        "a": "a",
-        "b": "b",
-        "c": "c",
-        "d": "d"
+        "a": "Both $x[n]$ and $y[n]$ are periodic",
+        "b": "$x[n]$ is periodic but $y[n]$ is not",
+        "c": "$y[n]$ is periodic but $x[n]$ is not",
+        "d": "Neither $x[n]$ or $y[n]$ are periodic"
       },
       "correctAnswer": "b",
       "difficulty": "Intermediate"
     },
     {
-      "question": "An LTI system with impulse response $h[n]=x[n]-x[n-1]$ acts as an\n a: low pass filter\n b: high pass filter\n c: band pass filter\n d: all pass filter",
+      "question": "An LTI system with impulse response $h[n]=x[n]-x[n-1]$ acts as an",
+      "options": [
+        "low pass filter",
+        "high pass filter",
+        "band pass filter",
+        "all pass filter"
+      ],
       "answers": {
-        "a": "a",
-        "b": "b",
-        "c": "c",
-        "d": "d"
+        "a": "low pass filter",
+        "b": "high pass filter",
+        "c": "band pass filter",
+        "d": "all pass filter"
       },
       "correctAnswer": "b",
       "difficulty": "Intermediate"
     },
     {
-      "question": "An LTI system with impulse response $h[n]=x[n]+x[n-1]$ acts as an\n a: low pass filter\n b: high pass filter\n c: band pass filter\n d: all pass filter",
+      "question": "An LTI system with impulse response $h[n]=x[n]+x[n-1]$ acts as an",
+      "options": [
+        "low pass filter",
+        "high pass filter",
+        "band pass filter",
+        "all pass filter"
+      ],
       "answers": {
-        "a": "a",
-        "b": "b",
-        "c": "c",
-        "d": "d"
+        "a": "low pass filter",
+        "b": "high pass filter",
+        "c": "band pass filter",
+        "d": "all pass filter"
       },
       "correctAnswer": "a",
       "difficulty": "Intermediate"

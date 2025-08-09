@@ -38,9 +38,9 @@
 							<h3> <b> To visualize the frequency response of an LTI system, follow these steps: </b> </h3>
 							<br>
 							<h3>
-								<ol> 
-									<li> Choose a system from the drop-down menu in the central box </li> 
-									<li> Enter the parameter values required to adjust the frequency response </li> 
+								<ol>
+									<li> Choose a system from the drop-down menu in the central box </li>
+									<li> Enter the parameter values required to adjust the frequency response </li>
 									<li> Click on the "Check" button to display the plot in the figures </li>
 								</ol>
 							</h3>
@@ -89,8 +89,8 @@
 						  <option value="1">Unit Impulse</option>
 						</select>
 					</div>
-					<div class="fill1"> Parameter 1: &emsp; <input type=number id="fre1" value=0.3 step=0.5> </div>
-					<div class="fill1"> Parameter 2: &emsp; <input type=number id="fre2" value=0.5 step=0.5> </div>
+					<div class="fill1"> <span id="fr-param1-label"></span> &emsp; <input type=number id="fre1" value=0.3 step=0.5> </div>
+					<div class="fill1"> <span id="fr-param2-label"></span> &emsp; <input type=number id="fre2" value=0.5 step=0.5> </div>
 				</div>
 			</div>
 
@@ -137,8 +137,8 @@
 							<h3>
 								<ol>
 									<li> Choose a signal from the drop-down menu in the left box </li>
-									<li> Choose a system from the drop-down menu in the central box </li> 
-									<li> Enter the parameter values required to adjust the frequency response </li> 
+									<li> Choose a system from the drop-down menu in the central box </li>
+									<li> Enter the parameter values required to adjust the frequency response </li>
 									<li> Click on the "Check" button to display the plot in the figures </li>
 								</ol>
 							</h3>
@@ -190,8 +190,8 @@
 							<option value="4">Pulse</option>
 						</select>
 					</div>
-					<div class="fill1"> Parameter 1: &emsp; <input type=number id="cutoff1" value=0.3 step=0.5> </div>
-					<div class="fill1"> Parameter 2: &emsp; <input type=number id="cutoff2" value=0.5 step=0.5> </div>
+					<div class="fill1"> <span id="sys-param1-label"></span> &emsp; <input type=number id="cutoff1" value=0.3 step=0.5> </div>
+					<div class="fill1"> <span id="sys-param2-label"></span> &emsp; <input type=number id="cutoff2" value=0.5 step=0.5> </div>
 				</div>
 			</div>
 
@@ -237,7 +237,7 @@
 							<h3> <b> To check your answer, follow these steps: </b> </h3>
 							<br>
 							<h3>
-								<ol> 
+								<ol>
 									<li> Choose a filter from the drop-down menu in the central box </li>
 									<li> Click on the "Check" button to verify your answer </li>
 								</ol>
@@ -322,8 +322,8 @@
 			<div class="column is-4-desktop is-6-tablet is-10-mobile">
 				<div class="box-question">
 					<div id='figure8' class="figureLast"></div>
-					<div class="fill1"> Parameter 1: &emsp; <input type=number id="cutoff3" value=0.3 step=0.5> </div>
-					<div class="fill1"> Parameter 2: &emsp; <input type=number id="cutoff4" value=0.5 step=0.5> </div>
+					<div class="fill1"> <span id="blk1-param1-label"></span> &emsp; <input type=number id="cutoff3" value=0.3 step=0.5> </div>
+					<div class="fill1"> <span id="blk1-param2-label"></span> &emsp; <input type=number id="cutoff4" value=0.5 step=0.5> </div>
 				</div>
 			</div>
 
@@ -365,6 +365,57 @@
 	<script src="./js/math.js"></script>
 	<script src="./js/plotly.js"></script>
 	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
+	<script>
+		// Frequency Response dynamic labels
+		const frParamLabels = {
+			"1": ["Cutoff Frequency", "Not relevant"],
+			"2": ["Cutoff Frequency", "Not relevant"],
+			"3": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"],
+			"4": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"],
+			"5": ["Scalar Value", "Not relevant"],
+			"6": ["Delay (samples)", "Not relevant"]
+		};
+		function updateFRLabels() {
+			const sel = document.getElementById("sig-names").value;
+			document.getElementById("fr-param1-label").textContent = frParamLabels[sel][0] ? frParamLabels[sel][0] : "Not relevant";
+			document.getElementById("fr-param2-label").textContent = frParamLabels[sel][1] ? frParamLabels[sel][1] : "Not relevant";
+		}
+		document.getElementById("sig-names").addEventListener("change", updateFRLabels);
+		document.getElementById("sig-names").addEventListener("input", updateFRLabels);
+		window.addEventListener("DOMContentLoaded", updateFRLabels);
+
+		// LTI Systems dynamic labels
+		const sysParamLabels = {
+			"1": ["Cutoff Frequency", "Not relevant"],
+			"2": ["Cutoff Frequency", "Not relevant"],
+			"3": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"],
+			"4": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"]
+		};
+		function updateSYSLabels() {
+			const sel = document.getElementById("sig-names2").value;
+			document.getElementById("sys-param1-label").textContent = sysParamLabels[sel][0] ? sysParamLabels[sel][0] : "Not relevant";
+			document.getElementById("sys-param2-label").textContent = sysParamLabels[sel][1] ? sysParamLabels[sel][1] : "Not relevant";
+		}
+		document.getElementById("sig-names2").addEventListener("change", updateSYSLabels);
+		document.getElementById("sig-names2").addEventListener("input", updateSYSLabels);
+		window.addEventListener("DOMContentLoaded", updateSYSLabels);
+
+		// Quiz 2 (BLK1) dynamic labels
+		const blk1ParamLabels = {
+			"1": ["Cutoff Frequency", "Not relevant"],
+			"2": ["Cutoff Frequency", "Not relevant"],
+			"3": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"],
+			"4": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"]
+		};
+		function updateBLK1Labels() {
+			const sel = document.getElementById("sig-names4").value;
+			document.getElementById("blk1-param1-label").textContent = blk1ParamLabels[sel][0] ? blk1ParamLabels[sel][0] : "Not relevant";
+			document.getElementById("blk1-param2-label").textContent = blk1ParamLabels[sel][1] ? blk1ParamLabels[sel][1] : "Not relevant";
+		}
+		document.getElementById("sig-names4").addEventListener("change", updateBLK1Labels);
+		document.getElementById("sig-names4").addEventListener("input", updateBLK1Labels);
+		window.addEventListener("DOMContentLoaded", updateBLK1Labels);
+	</script>
 
 </body>
 

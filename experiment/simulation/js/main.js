@@ -1,32 +1,30 @@
 function openPart(evt, name) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(name).style.display = "block";
-    evt.currentTarget.className += " active";
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(name).style.display = "block";
+  evt.currentTarget.className += " active";
 
-    if(!name.localeCompare('FR'))
-    {
-        freqResp();
-    }
-    else if(!name.localeCompare('SYS'))
-    {
-        syst();
-    }
-    else if(!name.localeCompare('MVG'))
-    {
-        mInit();
-    }
-    else
-    {
-        qInit();
-    }
+  if (!name.localeCompare("FR")) {
+    freqResp();
+    if (typeof updateFRLabels === "function") updateFRLabels();
+  } else if (!name.localeCompare("SYS")) {
+    syst();
+    if (typeof updateSYSLabels === "function") updateSYSLabels();
+  } else if (!name.localeCompare("MVG")) {
+    mInit();
+  } else if (!name.localeCompare("BLK1")) {
+    qInit();
+    if (typeof updateBLK1Labels === "function") updateBLK1Labels();
+  } else {
+    qInit();
+  }
 }
 
 var k;
@@ -40,801 +38,701 @@ var inValues;
 
 // ------------------------------------------ LTI Frequency Response ----------------------------------------------------------
 
-function freqResp(){
+function freqResp() {
+  var sel1 = document.getElementById("sig-names").value;
+  sel1 = parseInt(sel1);
+  var lc = document.getElementById("fre1").value;
+  lc = parseFloat(lc);
+  var hc = document.getElementById("fre2").value;
+  hc = parseFloat(hc);
 
-    var sel1 = document.getElementById("sig-names").value;
-    sel1 = parseInt(sel1);
-    var lc = document.getElementById("fre1").value;
-    lc = parseFloat(lc);
-    var hc = document.getElementById("fre2").value;
-    hc = parseFloat(hc);
+  N = 1001;
 
-    N = 1001;
+  var sigValues = [];
+  var phValues = [];
+  var xValues = makeArr(-Math.PI, Math.PI, N);
+  if (sel1 == 1) {
+    for (var i = 0; i <= 1000; i++) {
+      if (Math.abs(xValues[i]) < lc * Math.PI) {
+        sigValues.push(1);
+      } else {
+        sigValues.push(0);
+      }
+      phValues.push(0);
+    }
+  } else if (sel1 == 2) {
+    for (var i = 0; i <= 1000; i++) {
+      if (Math.abs(xValues[i]) < lc * Math.PI) {
+        sigValues.push(0);
+      } else {
+        sigValues.push(1);
+      }
+      phValues.push(0);
+    }
+  } else if (sel1 == 3) {
+    if (lc > hc) {
+      var temp = hc;
+      hc = lc;
+      lc = temp;
+    }
+    for (var i = 0; i <= 1000; i++) {
+      if (
+        Math.abs(xValues[i]) > lc * Math.PI &&
+        Math.abs(xValues[i]) < hc * Math.PI
+      ) {
+        sigValues.push(1);
+      } else {
+        sigValues.push(0);
+      }
+      phValues.push(0);
+    }
+  } else if (sel1 == 4) {
+    if (lc > hc) {
+      var temp = hc;
+      hc = lc;
+      lc = temp;
+    }
+    for (var i = 0; i <= 1000; i++) {
+      if (
+        Math.abs(xValues[i]) > lc * Math.PI &&
+        Math.abs(xValues[i]) < hc * Math.PI
+      ) {
+        sigValues.push(0);
+      } else {
+        sigValues.push(1);
+      }
+      phValues.push(0);
+    }
+  } else if (sel1 == 5) {
+    for (var i = 0; i <= 1000; i++) {
+      phValues.push(0);
+      sigValues.push(lc);
+    }
+  } else {
+    for (var i = 0; i <= 1000; i++) {
+      phValues.push(-lc * xValues[i]);
+      sigValues.push(1);
+    }
+  }
 
-    var sigValues = [];
-    var phValues = [];
-    var xValues = makeArr(-Math.PI,Math.PI,N);
-    if(sel1==1)
-    {
-        for (var i=0; i<=1000; i++)
-        {
-            if(Math.abs(xValues[i])<lc*Math.PI)
-            {
-                sigValues.push(1);
-            }
-            else
-            {
-                sigValues.push(0);
-            }
-            phValues.push(0);
-        }
-    }
-    else if(sel1==2)
-    {
-        for (var i=0; i<=1000; i++)
-        {
-            if(Math.abs(xValues[i])<lc*Math.PI)
-            {
-                sigValues.push(0);
-            }
-            else
-            {
-                sigValues.push(1);
-            }
-            phValues.push(0);
-        }
-    }
-    else if(sel1==3)
-    {
-        if(lc>hc)
-        {
-            var temp = hc;
-            hc = lc;
-            lc = temp;
-        }
-        for (var i=0; i<=1000; i++)
-        {
-            if(Math.abs(xValues[i])>lc*Math.PI && Math.abs(xValues[i])<hc*Math.PI)
-            {
-                sigValues.push(1);
-            }
-            else
-            {
-                sigValues.push(0);
-            }
-            phValues.push(0);
-        }
-    }
-    else if(sel1==4)
-    {
-        if(lc>hc)
-        {
-            var temp = hc;
-            hc = lc;
-            lc = temp;
-        }
-        for (var i=0; i<=1000; i++)
-        {
-            if(Math.abs(xValues[i])>lc*Math.PI && Math.abs(xValues[i])<hc*Math.PI)
-            {
-                sigValues.push(0);
-            }
-            else
-            {
-                sigValues.push(1);
-            }
-            phValues.push(0);
-        }
-    }
-    else if(sel1==5)
-    {
-        for (var i=0; i<=1000; i++)
-        {
-            phValues.push(0);
-            sigValues.push(lc);
-        }
-    }
-    else
-    {
-        for (var i=0; i<=1000; i++)
-        {
-            phValues.push(-lc*xValues[i]);
-            sigValues.push(1);
-        }
-    }
+  var trace1 = {
+    x: xValues,
+    y: sigValues,
+    type: "scatter",
+    name: "magnitude",
+    mode: "lines",
+  };
 
-    var trace1 = {
-        x: xValues,
-        y: sigValues,
-        type: 'scatter',
-        name: 'magnitude',
-        mode: 'lines'
+  var trace2 = {
+    x: xValues,
+    y: phValues,
+    type: "scatter",
+    name: "phase",
+    mode: "lines",
+  };
+
+  var data1 = [trace1];
+  var data2 = [trace2];
+
+  var config = { responsive: true };
+
+  var layout1 = {
+    title: "Magnitude Spectrum",
+    showlegend: false,
+    xaxis: {
+      title: "Frequency",
+    },
+    yaxis: {
+      title: "Magnitude",
+    },
+  };
+
+  var layout2 = {
+    title: "Phase Spectrum",
+    showlegend: false,
+    xaxis: {
+      title: "Frequency",
+    },
+    yaxis: {
+      title: "Phase",
+    },
+  };
+
+  Plotly.newPlot("figure1", data1, layout1, config);
+
+  if (screen.width < 769) {
+    var update = {
+      width: 0.9 * screen.width,
+      height: 400,
     };
-
-    var trace2 = {
-        x: xValues,
-        y: phValues,
-        type: 'scatter',
-        name: 'phase',
-        mode: 'lines'
+  } else {
+    var update = {
+      width: 500,
+      height: 400,
     };
-      
-    var data1 = [trace1];
-    var data2 = [trace2];
+  }
 
-    var config = {responsive: true}
+  Plotly.relayout("figure1", update);
+  Plotly.newPlot("figure2", data2, layout2, config);
 
-    var layout1 = {
-        title: 'Magnitude Spectrum',
-        showlegend: false,
-        xaxis: {
-            title: 'Frequency'
-        },
-        yaxis: {
-            title: 'Magnitude'
-        }
+  if (screen.width < 769) {
+    var update = {
+      width: 0.9 * screen.width,
+      height: 400,
     };
-
-    var layout2 = {
-        title: 'Phase Spectrum',
-        showlegend: false,
-        xaxis: {
-            title: 'Frequency'
-        },
-        yaxis: {
-            title: 'Phase'
-        }
+  } else {
+    var update = {
+      width: 500,
+      height: 400,
     };
-      
-    Plotly.newPlot('figure1', data1, layout1, config);
-    
-    if(screen.width < 769)
-    {
-        var update = {
-            width: 0.9*screen.width,
-            height: 400
-        };
-    }
-    else
-    {
-        var update = {
-            width: 500,
-            height: 400
-        };
-    }
+  }
 
-    Plotly.relayout('figure1', update);
-    Plotly.newPlot('figure2', data2, layout2, config);
-    
-    if(screen.width < 769)
-    {
-        var update = {
-            width: 0.9*screen.width,
-            height: 400
-        };
-    }
-    else
-    {
-        var update = {
-            width: 500,
-            height: 400
-        };
-    }
-
-    Plotly.relayout('figure2', update);
+  Plotly.relayout("figure2", update);
 }
 
 // ------------------------------------------ LTI System Functions ----------------------------------------------------------
 
-function fourier(waveform){
-    var N = waveform.length;
-    var ft = [];
-    
-    for(var k=0; k<N; k++)
-    {
-        var sum = math.complex(0,0);
-        for(var n=0; n<N; n++)
-        {
-            sum = math.add(sum, math.multiply(waveform[n], math.complex(Math.cos(2*Math.PI*k*n/N), -Math.sin(2*Math.PI*k*n/N))));
-        }
-        ft.push(sum);
+function fourier(waveform) {
+  var N = waveform.length;
+  var ft = [];
+
+  for (var k = 0; k < N; k++) {
+    var sum = math.complex(0, 0);
+    for (var n = 0; n < N; n++) {
+      sum = math.add(
+        sum,
+        math.multiply(
+          waveform[n],
+          math.complex(
+            Math.cos((2 * Math.PI * k * n) / N),
+            -Math.sin((2 * Math.PI * k * n) / N),
+          ),
+        ),
+      );
     }
-    return ft;
+    ft.push(sum);
+  }
+  return ft;
 }
 
-function invFourier(waveform){
-    var N = waveform.length;
-    var ft = [];
-    
-    for(var k=0; k<N; k++)
-    {
-        var sum = math.complex(0,0);
-        for(var n=0; n<N; n++)
-        {
-            sum = math.add(sum, math.complex(
-                math.re(waveform[n]) * Math.cos(2*Math.PI*k*n/N) / N - math.im(waveform[n]) * Math.sin(2*Math.PI*k*n/N) / N,
-                math.re(waveform[n]) * Math.sin(2*Math.PI*k*n/N) / N + math.im(waveform[n]) * Math.cos(2*Math.PI*k*n/N) / N
-            ));
-        }
-        ft.push(sum);
+function invFourier(waveform) {
+  var N = waveform.length;
+  var ft = [];
+
+  for (var k = 0; k < N; k++) {
+    var sum = math.complex(0, 0);
+    for (var n = 0; n < N; n++) {
+      sum = math.add(
+        sum,
+        math.complex(
+          (math.re(waveform[n]) * Math.cos((2 * Math.PI * k * n) / N)) / N -
+            (math.im(waveform[n]) * Math.sin((2 * Math.PI * k * n) / N)) / N,
+          (math.re(waveform[n]) * Math.sin((2 * Math.PI * k * n) / N)) / N +
+            (math.im(waveform[n]) * Math.cos((2 * Math.PI * k * n) / N)) / N,
+        ),
+      );
     }
-    return ft;
+    ft.push(sum);
+  }
+  return ft;
 }
-function shift(signal){
-    var N = signal.length;
-    var cut = parseInt(N/2);
-    var out = [];
-    for(var i=cut+1; i<N; i++)
-    {
-        out.push(signal[i]);
-    }
-    for(var i=0; i<=cut; i++)
-    {
-        out.push(signal[i]);
-    }
-    return out;
+function shift(signal) {
+  var N = signal.length;
+  var cut = parseInt(N / 2);
+  var out = [];
+  for (var i = cut + 1; i < N; i++) {
+    out.push(signal[i]);
+  }
+  for (var i = 0; i <= cut; i++) {
+    out.push(signal[i]);
+  }
+  return out;
 }
 
-function syst(){
-    var sel = document.getElementById("imp-names2").value;
-    sel = parseFloat(sel);
-    var sel1 = document.getElementById("sig-names2").value;
-    sel1 = parseFloat(sel1);
-    var lc = document.getElementById("cutoff1").value;
-    lc = parseFloat(lc);
-    var hc = document.getElementById("cutoff2").value;
-    hc = parseFloat(hc);
-    am = 1;
-    freq = 0.3;
-    var sigValues = [];
-    var yValues = [];
+function syst() {
+  var sel = document.getElementById("imp-names2").value;
+  sel = parseFloat(sel);
+  var sel1 = document.getElementById("sig-names2").value;
+  sel1 = parseFloat(sel1);
+  var lc = document.getElementById("cutoff1").value;
+  lc = parseFloat(lc);
+  var hc = document.getElementById("cutoff2").value;
+  hc = parseFloat(hc);
+  am = 1;
+  freq = 0.3;
+  var sigValues = [];
+  var yValues = [];
 
-    if(sel==1)
-    {
-        var xValues = makeArr(-100,100,201);
-        for (var i=0; i<=200; i++)
-        {
-            sigValues.push(am*Math.sin(freq*xValues[i]));
-        }
+  if (sel == 1) {
+    var xValues = makeArr(-100, 100, 201);
+    for (var i = 0; i <= 200; i++) {
+      sigValues.push(am * Math.sin(freq * xValues[i]));
     }
-    else if(sel==2)
-    {
-        var xValues = makeArr(-100,100,201);
-        for (var i=0; i<=200; i++)
-        {
-            sigValues.push(am*Math.cos(freq*xValues[i]));
-        }
+  } else if (sel == 2) {
+    var xValues = makeArr(-100, 100, 201);
+    for (var i = 0; i <= 200; i++) {
+      sigValues.push(am * Math.cos(freq * xValues[i]));
     }
-    else if(sel==3)
-    {
-        var total = 201;
-        var xValues = makeArr(-parseInt((total-1)/2),parseInt((total-1)/2),total);
-        for (var i=0; i<=total-1; i++)
-        {
-            var c = parseInt(total/3);
-            if(i<c)
-            {
-                sigValues.push(0);
-            }
-            else if(i<2*c)
-            {
-                sigValues.push(am*xValues[i]);
-            }
-            else
-            {
-                sigValues.push(0);
-            }
-        }
+  } else if (sel == 3) {
+    var total = 201;
+    var xValues = makeArr(
+      -parseInt((total - 1) / 2),
+      parseInt((total - 1) / 2),
+      total,
+    );
+    for (var i = 0; i <= total - 1; i++) {
+      var c = parseInt(total / 3);
+      if (i < c) {
+        sigValues.push(0);
+      } else if (i < 2 * c) {
+        sigValues.push(am * xValues[i]);
+      } else {
+        sigValues.push(0);
+      }
     }
-    else
-    {
-        var total = 201;
-        var xValues = makeArr(-parseInt((total-1)/2),parseInt((total-1)/2),total);
-        for (var i=0; i<=total-1; i++)
-        {
-            var c = parseInt(total/3);
-            if(i<c)
-            {
-                sigValues.push(0);
-            }
-            else if(i<2*c)
-            {
-                sigValues.push(am);
-            }
-            else
-            {
-                sigValues.push(0);
-            }
-        }
+  } else {
+    var total = 201;
+    var xValues = makeArr(
+      -parseInt((total - 1) / 2),
+      parseInt((total - 1) / 2),
+      total,
+    );
+    for (var i = 0; i <= total - 1; i++) {
+      var c = parseInt(total / 3);
+      if (i < c) {
+        sigValues.push(0);
+      } else if (i < 2 * c) {
+        sigValues.push(am);
+      } else {
+        sigValues.push(0);
+      }
     }
+  }
 
-    // Keep the original signal for calculations
-    var originalSigValues = [...sigValues];
+  // Keep the original signal for calculations
+  var originalSigValues = [...sigValues];
 
-    var transOr = fourier(originalSigValues);
-    var wValues = makeArr(-Math.PI,Math.PI,transOr.length);
-    var ampSpec = [];
-    var phSpec = [];
-    for(var i=0; i<transOr.length; i++)
-    {
-        ampSpec.push(math.sqrt(math.pow(math.re(transOr[i]),2)+math.pow(math.im(transOr[i]),2)));
-        phSpec.push(math.atan2(math.im(transOr[i]),math.re(transOr[i])));
+  var transOr = fourier(originalSigValues);
+  var wValues = makeArr(-Math.PI, Math.PI, transOr.length);
+  var ampSpec = [];
+  var phSpec = [];
+  for (var i = 0; i < transOr.length; i++) {
+    ampSpec.push(
+      math.sqrt(
+        math.pow(math.re(transOr[i]), 2) + math.pow(math.im(transOr[i]), 2),
+      ),
+    );
+    phSpec.push(math.atan2(math.im(transOr[i]), math.re(transOr[i])));
+  }
+
+  // Normalize amplitude spectrum
+  var maxAmpSpec = Math.max(...ampSpec.map(Math.abs));
+  ampSpec = ampSpec.map((value) => value / maxAmpSpec);
+
+  var filValues = [];
+  if (sel1 == 2) {
+    for (var i = 0; i < wValues.length; i++) {
+      if (Math.abs(wValues[i]) < lc * Math.PI) {
+        filValues.push(1);
+      } else {
+        filValues.push(0);
+      }
     }
-
-    // Normalize amplitude spectrum
-    var maxAmpSpec = Math.max(...ampSpec.map(Math.abs));
-    ampSpec = ampSpec.map(value => value / maxAmpSpec);
-
-    var filValues = [];
-    if(sel1==2)
-    {
-        for (var i=0; i<wValues.length; i++)
-        {
-            if(Math.abs(wValues[i])<lc*Math.PI)
-            {
-                filValues.push(1);
-            }
-            else
-            {
-                filValues.push(0);
-            }
-        }
+  } else if (sel1 == 1) {
+    for (var i = 0; i < wValues.length; i++) {
+      if (Math.abs(wValues[i]) < lc * Math.PI) {
+        filValues.push(0);
+      } else {
+        filValues.push(1);
+      }
     }
-    else if(sel1==1)
-    {
-        for (var i=0; i<wValues.length; i++)
-        {
-            if(Math.abs(wValues[i])<lc*Math.PI)
-            {
-                filValues.push(0);
-            }
-            else
-            {
-                filValues.push(1);
-            }
-        }
+  } else if (sel1 == 3) {
+    if (lc > hc) {
+      var temp = hc;
+      hc = lc;
+      lc = temp;
     }
-    else if(sel1==3)
-    {
-        if(lc>hc)
-        {
-            var temp = hc;
-            hc = lc;
-            lc = temp;
-        }
-        for (var i=0; i<wValues.length; i++)
-        {
-            if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
-            {
-                filValues.push(1);
-            }
-            else
-            {
-                filValues.push(0);
-            }
-        }
+    for (var i = 0; i < wValues.length; i++) {
+      if (
+        Math.abs(wValues[i]) > lc * Math.PI &&
+        Math.abs(wValues[i]) < hc * Math.PI
+      ) {
+        filValues.push(1);
+      } else {
+        filValues.push(0);
+      }
     }
-    else
-    {
-        if(lc>hc)
-        {
-            var temp = hc;
-            hc = lc;
-            lc = temp;
-        }
-        for (var i=0; i<wValues.length; i++)
-        {
-            if(Math.abs(wValues[i])>lc*Math.PI && Math.abs(wValues[i])<hc*Math.PI)
-            {
-                filValues.push(0);
-            }
-            else
-            {
-                filValues.push(1);
-            }
-        }
+  } else {
+    if (lc > hc) {
+      var temp = hc;
+      hc = lc;
+      lc = temp;
     }
-
-    var outValues = math.dotMultiply(filValues, transOr);
-    var ampSpecOut = [];
-    var phSpecOut = [];
-    for(var i=0; i<outValues.length; i++)
-    {
-        ampSpecOut.push(math.sqrt(math.pow(math.re(outValues[i]),2)+math.pow(math.im(outValues[i]),2)));
-        phSpecOut.push(math.atan2(math.im(outValues[i]),math.re(outValues[i])));
+    for (var i = 0; i < wValues.length; i++) {
+      if (
+        Math.abs(wValues[i]) > lc * Math.PI &&
+        Math.abs(wValues[i]) < hc * Math.PI
+      ) {
+        filValues.push(0);
+      } else {
+        filValues.push(1);
+      }
     }
+  }
 
-    var sigValuesOut = invFourier(outValues);
-    var sigRealOut = [];
-    for(var i=0; i<sigValuesOut.length; i++)
-    {
-        sigRealOut.push(math.re(sigValuesOut[i]));
-    }
+  var outValues = math.dotMultiply(filValues, transOr);
+  var ampSpecOut = [];
+  var phSpecOut = [];
+  for (var i = 0; i < outValues.length; i++) {
+    ampSpecOut.push(
+      math.sqrt(
+        math.pow(math.re(outValues[i]), 2) + math.pow(math.im(outValues[i]), 2),
+      ),
+    );
+    phSpecOut.push(math.atan2(math.im(outValues[i]), math.re(outValues[i])));
+  }
 
-    // Normalize the original signal values for plotting
-    var maxSigValue = Math.max(...originalSigValues.map(Math.abs));
-    var normalizedSigValues = originalSigValues.map(value => value / maxSigValue);
-    var normalizedSpectrumValue = ampSpecOut.map(value => value / maxAmpSpec);
+  var sigValuesOut = invFourier(outValues);
+  var sigRealOut = [];
+  for (var i = 0; i < sigValuesOut.length; i++) {
+    sigRealOut.push(math.re(sigValuesOut[i]));
+  }
 
+  // Normalize the original signal values for plotting
+  var maxSigValue = Math.max(...originalSigValues.map(Math.abs));
+  var normalizedSigValues = originalSigValues.map(
+    (value) => value / maxSigValue,
+  );
+  var normalizedSpectrumValue = ampSpecOut.map((value) => value / maxAmpSpec);
 
+  var trace1 = {
+    x: wValues,
+    y: shift(ampSpec),
+    type: "scatter",
+    mode: "lines",
+    name: "Original Spectrum",
+  };
+  var trace2 = {
+    x: wValues,
+    y: shift(filValues),
+    type: "scatter",
+    mode: "lines",
+    name: "Filter",
+  };
+  var trace3 = {
+    x: wValues,
+    y: shift(normalizedSpectrumValue),
+    type: "scatter",
+    mode: "lines",
+    name: "Filtered Spectrum",
+  };
+  var trace4 = {
+    x: xValues,
+    y: normalizedSigValues,
+    type: "scatter",
+    mode: "lines",
+    name: "Original Signal",
+  };
+  var trace5 = {
+    x: xValues,
+    y: sigRealOut,
+    type: "scatter",
+    mode: "lines",
+    name: "Filtered Signal",
+  };
+  var data1 = [trace1, trace2];
+  var data2 = [trace3];
+  var data3 = [trace4, trace5];
 
-    var trace1 = {
-        x: wValues,
-        y: shift(ampSpec),
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Original Spectrum'
-    };
-    var trace2 = {
-        x: wValues,
-        y: shift(filValues),
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Filter'
-    };
-    var trace3 = {
-        x: wValues,
-        y: shift(normalizedSpectrumValue),
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Filtered Spectrum'
-    };
-    var trace4 = {
-        x: xValues,
-        y: normalizedSigValues,
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Original Signal'
-    };
-    var trace5 = {
-        x: xValues,
-        y: sigRealOut,
-        type: 'scatter',
-        mode: 'lines',
-        name: 'Filtered Signal'
-    };
-    var data1 = [trace1, trace2];
-    var data2 = [trace3];
-    var data3 = [trace4, trace5];
+  var config = { responsive: true };
 
-    var config = {responsive: true}
+  var layout1 = {
+    title: "Magnitude Spectrum",
+    xaxis: {
+      title: "Frequency",
+    },
+    yaxis: {
+      title: "Magnitude",
+    },
+    showlegend: true,
+  };
 
-    var layout1 = {
-        title: 'Magnitude Spectrum',
-        xaxis: {
-            title: 'Frequency'
-        },
-        yaxis: {
-            title: 'Magnitude'
-        },
-        showlegend: true
-    };
+  var layout2 = {
+    title: "Time Domain",
+    xaxis: {
+      title: "Time",
+    },
+    yaxis: {
+      title: "Amplitude",
+    },
+    showlegend: true,
+  };
 
-    var layout2 = {
-        title: 'Time Domain',
-        xaxis: {
-            title: 'Time'
-        },
-        yaxis: {
-            title: 'Amplitude'
-        },
-        showlegend: true
-    };
-      
-    Plotly.newPlot('figure3', data1, layout1, config);
-    
-    var update = {
-        width: screen.width < 769 ? 0.9 * screen.width : 500,
-        height: 400
-    };
-    Plotly.relayout('figure3', update);
-    Plotly.newPlot('figure4', data2, layout1, config);
-    Plotly.relayout('figure4', update);
-    Plotly.newPlot('figure5', data3, layout2, config);
-    Plotly.relayout('figure5', update);
+  Plotly.newPlot("figure3", data1, layout1, config);
+
+  var update = {
+    width: screen.width < 769 ? 0.9 * screen.width : 500,
+    height: 400,
+  };
+  Plotly.relayout("figure3", update);
+  Plotly.newPlot("figure4", data2, layout1, config);
+  Plotly.relayout("figure4", update);
+  Plotly.newPlot("figure5", data3, layout2, config);
+  Plotly.relayout("figure5", update);
 }
 // ------------------------------------------ Quiz 1 ----------------------------------------------------------
 
-function mInit(){
-    var wValues = makeArr(-Math.PI,Math.PI,201);
-    var inValues = [];
-    var outValues = [];
-    for(var i=0; i<200; i++)
-    {
-        if(i==20 || i==40 || i==180 || i==160)
-        {
-            inValues.push(1);
-        }
-        else
-        {
-            inValues.push(0);
-        }
-
-        if(i==40 || i==160)
-        {
-            outValues.push(1);
-        }
-        else
-        {
-            outValues.push(0);
-        }
+function mInit() {
+  var wValues = makeArr(-Math.PI, Math.PI, 201);
+  var inValues = [];
+  var outValues = [];
+  for (var i = 0; i < 200; i++) {
+    if (i == 20 || i == 40 || i == 180 || i == 160) {
+      inValues.push(1);
+    } else {
+      inValues.push(0);
     }
-    var trace1 = {
-        x: wValues,
-        y: inValues,
-        type: 'scatter',
-        name: 'output',
-        mode: 'markers'
+
+    if (i == 40 || i == 160) {
+      outValues.push(1);
+    } else {
+      outValues.push(0);
+    }
+  }
+  var trace1 = {
+    x: wValues,
+    y: inValues,
+    type: "scatter",
+    name: "output",
+    mode: "markers",
+  };
+  var trace2 = {
+    x: wValues,
+    y: outValues,
+    type: "scatter",
+    name: "output",
+    mode: "markers",
+  };
+  var data1 = [trace1];
+  var data2 = [trace2];
+
+  var config = { responsive: true };
+
+  var layout1 = {
+    title: "Magnitude Spectrum",
+    xaxis: {
+      title: "Frequency",
+    },
+    yaxis: {
+      title: "Magnitude",
+    },
+  };
+
+  Plotly.newPlot("figure6", data1, layout1, config);
+
+  if (screen.width < 769) {
+    var update = {
+      width: 0.9 * screen.width,
+      height: 400,
     };
-    var trace2 = {
-        x: wValues,
-        y: outValues,
-        type: 'scatter',
-        name: 'output',
-        mode: 'markers'
+  } else {
+    var update = {
+      width: 400,
+      height: 400,
     };
-    var data1 = [trace1];
-    var data2 = [trace2];
+  }
 
-    var config = {responsive: true}
+  Plotly.relayout("figure6", update);
 
-    var layout1 = {
-        title: 'Magnitude Spectrum',
-        xaxis: {
-            title: 'Frequency'
-        },
-        yaxis: {
-            title: 'Magnitude'
-        }
+  Plotly.newPlot("figure7", data2, layout1, config);
+
+  if (screen.width < 769) {
+    var update = {
+      width: 0.9 * screen.width,
+      height: 400,
     };
-      
-    Plotly.newPlot('figure6', data1, layout1, config);
-    
-    if(screen.width < 769)
-    {
-        var update = {
-            width: 0.9*screen.width,
-            height: 400
-        };
-    }
-    else
-    {
-        var update = {
-            width: 400,
-            height: 400
-        };
-    }
+  } else {
+    var update = {
+      width: 400,
+      height: 400,
+    };
+  }
 
-    Plotly.relayout('figure6', update);
-
-    Plotly.newPlot('figure7', data2, layout1, config);
-    
-    if(screen.width < 769)
-    {
-        var update = {
-            width: 0.9*screen.width,
-            height: 400
-        };
-    }
-    else
-    {
-        var update = {
-            width: 400,
-            height: 400
-        };
-    }
-
-    Plotly.relayout('figure7', update);
+  Plotly.relayout("figure7", update);
 }
 
-function mavg(){
-    
-    var sel1 = document.getElementById("sig-names3").value;
-    sel1 = parseFloat(sel1);
+function mavg() {
+  var sel1 = document.getElementById("sig-names3").value;
+  sel1 = parseFloat(sel1);
 
-    if(sel1==2)
-    {
-        var element = document.getElementById("result1")
-        element.style.color = "#006400";
-        element.style.fontWeight = "bold";
-        element.innerHTML = 'Right Answer!';
-    }
-    else
-    {
-        var element = document.getElementById("result1")
-        element.style.color = "#FF0000";
-        element.style.fontWeight = "bold";
-        element.innerHTML = 'Wrong Answer!';
-    }
+  if (sel1 == 2) {
+    var element = document.getElementById("result1");
+    element.style.color = "#006400";
+    element.style.fontWeight = "bold";
+    element.innerHTML = "Right Answer!";
+  } else {
+    var element = document.getElementById("result1");
+    element.style.color = "#FF0000";
+    element.style.fontWeight = "bold";
+    element.innerHTML = "Wrong Answer!";
+  }
 }
 
 /* ----------------------------------------------- Quiz 2 --------------------------------- */
 
-function qInit(){
-    var wValues = makeArr(-Math.PI,Math.PI,201);
-    var inValues = [];
-    var outValues = [];
-    for(var i=0; i<200; i++)
-    {
-        if(i==20 || i==40 || i==180 || i==160)
-        {
-            inValues.push(1);
-        }
-        else
-        {
-            inValues.push(0);
-        }
-
-        if(i==40 || i==160)
-        {
-            outValues.push(1);
-        }
-        else
-        {
-            outValues.push(0);
-        }
+function qInit() {
+  var wValues = makeArr(-Math.PI, Math.PI, 201);
+  var inValues = [];
+  var outValues = [];
+  for (var i = 0; i < 200; i++) {
+    if (i == 20 || i == 40 || i == 180 || i == 160) {
+      inValues.push(1);
+    } else {
+      inValues.push(0);
     }
-    var trace1 = {
-        x: wValues,
-        y: inValues,
-        type: 'scatter',
-        name: 'output',
-        mode: 'markers'
+
+    if (i == 40 || i == 160) {
+      outValues.push(1);
+    } else {
+      outValues.push(0);
+    }
+  }
+  var trace1 = {
+    x: wValues,
+    y: inValues,
+    type: "scatter",
+    name: "output",
+    mode: "markers",
+  };
+  var trace2 = {
+    x: wValues,
+    y: outValues,
+    type: "scatter",
+    name: "output",
+    mode: "markers",
+  };
+  var data1 = [trace1];
+  var data2 = [trace2];
+
+  var config = { responsive: true };
+
+  var layout1 = {
+    title: "Magnitude Spectrum",
+    xaxis: {
+      title: "Frequency",
+    },
+    yaxis: {
+      title: "Magnitude",
+    },
+  };
+
+  Plotly.newPlot("figure8", data1, layout1, config);
+
+  if (screen.width < 769) {
+    var update = {
+      width: 0.9 * screen.width,
+      height: 400,
     };
-    var trace2 = {
-        x: wValues,
-        y: outValues,
-        type: 'scatter',
-        name: 'output',
-        mode: 'markers'
+  } else {
+    var update = {
+      width: 500,
+      height: 400,
     };
-    var data1 = [trace1];
-    var data2 = [trace2];
+  }
 
-    var config = {responsive: true}
+  Plotly.relayout("figure8", update);
 
-    var layout1 = {
-        title: 'Magnitude Spectrum',
-        xaxis: {
-            title: 'Frequency'
-        },
-        yaxis: {
-            title: 'Magnitude'
-        }
+  Plotly.newPlot("figure9", data2, layout1, config);
+
+  if (screen.width < 769) {
+    var update = {
+      width: 0.9 * screen.width,
+      height: 400,
     };
-      
-    Plotly.newPlot('figure8', data1, layout1, config);
-    
-    if(screen.width < 769)
-    {
-        var update = {
-            width: 0.9*screen.width,
-            height: 400
-        };
-    }
-    else
-    {
-        var update = {
-            width: 500,
-            height: 400
-        };
-    }
+  } else {
+    var update = {
+      width: 500,
+      height: 400,
+    };
+  }
 
-    Plotly.relayout('figure8', update);
-
-    Plotly.newPlot('figure9', data2, layout1, config);
-    
-    if(screen.width < 769)
-    {
-        var update = {
-            width: 0.9*screen.width,
-            height: 400
-        };
-    }
-    else
-    {
-        var update = {
-            width: 500,
-            height: 400
-        };
-    }
-    
-    Plotly.relayout('figure9', update);
+  Plotly.relayout("figure9", update);
 }
 
-function mavg1(){
-    
-    var sel1 = document.getElementById("sig-names4").value;
-    sel1 = parseFloat(sel1);
-    var lc = document.getElementById("cutoff3").value;
-    lc = parseFloat(lc);
-    lc = lc*Math.PI;
-    var hc = document.getElementById("cutoff4").value;
-    hc = parseFloat(hc);
-    hc = hc*Math.PI;
+function mavg1() {
+  var sel1 = document.getElementById("sig-names4").value;
+  sel1 = parseFloat(sel1);
+  var lc = document.getElementById("cutoff3").value;
+  lc = parseFloat(lc);
+  lc = lc * Math.PI;
+  var hc = document.getElementById("cutoff4").value;
+  hc = parseFloat(hc);
+  hc = hc * Math.PI;
 
-    if(sel1==2)
-    {
-        var element = document.getElementById("result2")
+  if (sel1 == 2) {
+    var element = document.getElementById("result2");
+    element.style.color = "#FF0000";
+    element.style.fontWeight = "bold";
+    element.innerHTML = "Wrong Answer!";
+  } else {
+    var wValues = makeArr(-Math.PI, Math.PI, 201);
+    var f1 = wValues[160];
+    var f2 = wValues[180];
+    if (sel1 == 1) {
+      if (lc >= f1 && lc <= f2) {
+        var element = document.getElementById("result2");
+        element.style.color = "#006400";
+        element.style.fontWeight = "bold";
+        element.innerHTML = "Right Answer!";
+      } else {
+        var element = document.getElementById("result2");
         element.style.color = "#FF0000";
         element.style.fontWeight = "bold";
-        element.innerHTML = 'Wrong Answer!';
+        element.innerHTML = "Wrong Answer!";
+      }
+    } else if (sel1 == 3) {
+      if (lc <= f1 && hc >= f1 && hc <= f2) {
+        var element = document.getElementById("result2");
+        element.style.color = "#006400";
+        element.style.fontWeight = "bold";
+        element.innerHTML = "Right Answer!";
+      } else {
+        var element = document.getElementById("result2");
+        element.style.color = "#FF0000";
+        element.style.fontWeight = "bold";
+        element.innerHTML = "Wrong Answer!";
+      }
+    } else {
+      if (lc >= f1 && lc <= f2 && hc >= f2) {
+        var element = document.getElementById("result2");
+        element.style.color = "#006400";
+        element.style.fontWeight = "bold";
+        element.innerHTML = "Right Answer!";
+      } else {
+        var element = document.getElementById("result2");
+        element.style.color = "#FF0000";
+        element.style.fontWeight = "bold";
+        element.innerHTML = "Wrong Answer!";
+      }
     }
-    else
-    {
-        var wValues = makeArr(-Math.PI,Math.PI,201);
-        var f1 = wValues[160];
-        var f2 = wValues[180];
-        if(sel1==1)
-        {
-            if(lc>=f1 && lc<=f2)
-            {
-                var element = document.getElementById("result2")
-                element.style.color = "#006400";
-                element.style.fontWeight = "bold";
-                element.innerHTML = 'Right Answer!';
-            }
-            else
-            {
-                var element = document.getElementById("result2")
-                element.style.color = "#FF0000";
-                element.style.fontWeight = "bold";
-                element.innerHTML = 'Wrong Answer!';
-            }
-        }
-        else if(sel1==3)
-        {
-            if(lc<=f1 && hc>=f1 && hc<=f2)
-            {
-                var element = document.getElementById("result2")
-                element.style.color = "#006400";
-                element.style.fontWeight = "bold";
-                element.innerHTML = 'Right Answer!';
-            }
-            else
-            {
-                var element = document.getElementById("result2")
-                element.style.color = "#FF0000";
-                element.style.fontWeight = "bold";
-                element.innerHTML = 'Wrong Answer!';
-            }
-        }
-        else
-        {
-            if(lc>=f1 && lc<=f2 && hc>=f2)
-            {
-                var element = document.getElementById("result2")
-                element.style.color = "#006400";
-                element.style.fontWeight = "bold";
-                element.innerHTML = 'Right Answer!';
-            }
-            else
-            {
-                var element = document.getElementById("result2")
-                element.style.color = "#FF0000";
-                element.style.fontWeight = "bold";
-                element.innerHTML = 'Wrong Answer!';
-            }
-        }
-    }
+  }
 }
 
 /* ---------------------------- LinSpace -------------------------------------- */
 
 function makeArr(startValue, stopValue, cardinality) {
-    var arr = [];
-    var step = (stopValue - startValue) / (cardinality - 1);
-    for (var i = 0; i < cardinality; i++) {
-      arr.push(startValue + (step * i));
-    }
-    return arr;
+  var arr = [];
+  var step = (stopValue - startValue) / (cardinality - 1);
+  for (var i = 0; i < cardinality; i++) {
+    arr.push(startValue + step * i);
+  }
+  return arr;
 }
 
 // ------------------------------------------ On startup ----------------------------------------------------------
 
-function startup()
-{
-    document.getElementById("default").click();
+function startup() {
+  document.getElementById("default").click();
 }
 
 window.onload = startup;

@@ -2,45 +2,69 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "Which of the following functions cannot be frequency response of a discrete-time LTI system?\n a: $H(\\omega)=\\sin (\\omega)$\n b: $H(\\omega)=\\sin (2 \\omega)$\n c: $H(\\omega)=\\sin (\\omega / 2)$\n d: $H(\\omega)=\\sin ^2(\\omega)$",
+      "question": "Which of the following functions cannot be frequency response of a discrete-time LTI system?",
+      "options": [
+        "$H(\\omega)=\\sin (\\omega)$",
+        "$H(\\omega)=\\sin (2 \\omega)$",
+        "$H(\\omega)=\\sin (\\omega / 2)$",
+        "$H(\\omega)=\\sin ^2(\\omega)$"
+      ],
       "answers": {
-        "a": "a",
-        "b": "b",
-        "c": "c",
-        "d": "d"
+        "a": "$H(\\omega)=\\sin (\\omega)$",
+        "b": "$H(\\omega)=\\sin (2 \\omega)$",
+        "c": "$H(\\omega)=\\sin (\\omega / 2)$",
+        "d": "$H(\\omega)=\\sin ^2(\\omega)$"
       },
       "correctAnswer": "a",
       "difficulty": "Intermediate"
     },
     {
-      "question": "The signal $x[n]=1+\\sin (n)+\\sin (\\pi n)$ is given as input to a low pass filter with cut-off frequency of 2.\n Select the correct statement from the following:\n a: Both $x[n]$ and $y[n]$ are periodic\n b: $x[n]$ is periodic but $y[n]$ is not\n c: $y[n]$ is periodic but $x[n]$ is not\n d: Neither $x[n]$ or $y[n]$ are periodic",
+      "question": "The signal $x[n]=1+\\sin (n)+\\sin (\\pi n)$ is given as input to a low pass filter with cut-off frequency of 2. Select the correct statement from the following:",
+      "options": [
+        "Both $x[n]$ and $y[n]$ are periodic",
+        "$x[n]$ is periodic but $y[n]$ is not",
+        "$y[n]$ is periodic but $x[n]$ is not",
+        "Neither $x[n]$ or $y[n]$ are periodic"
+      ],
       "answers": {
-        "a": "a",
-        "b": "b",
-        "c": "c",
-        "d": "d"
+        "a": "Both $x[n]$ and $y[n]$ are periodic",
+        "b": "$x[n]$ is periodic but $y[n]$ is not",
+        "c": "$y[n]$ is periodic but $x[n]$ is not",
+        "d": "Neither $x[n]$ or $y[n]$ are periodic"
       },
       "correctAnswer": "b",
       "difficulty": "Intermediate"
     },
     {
-      "question": "If the magnitude response of an LTI system is constant and the phase response is linear, then the input and output are related by\n a: output signal is a scaled and delayed version of the input signal\n b: output signal is always a scaled version of the input signal\n c: output signal is always a delayed version of the input signal\n d: cannot be determined",
+      "question": "If the magnitude response of an LTI system is constant and the phase response is linear, then the input and output are related by",
+      "options": [
+        "output signal is a scaled and delayed version of the input signal",
+        "output signal is always a scaled version of the input signal",
+        "output signal is always a delayed version of the input signal",
+        "cannot be determined"
+      ],
       "answers": {
-        "a": "a",
-        "b": "b",
-        "c": "c",
-        "d": "d"
+        "a": "output signal is a scaled and delayed version of the input signal",
+        "b": "output signal is always a scaled version of the input signal",
+        "c": "output signal is always a delayed version of the input signal",
+        "d": "cannot be determined"
       },
       "correctAnswer": "a",
       "difficulty": "Intermediate"
     },
     {
-      "question": "If the input to an LTI system is $x[n]=e^{j n}$, the system output\n a: is always of the form $y[n]=A e^{j n}$\n b: is always of the form $y[n]=e^{j n}$\n c: is always of the form $y[n]=A e^{j n+j \\phi}$\n d: cannot be determined",
+      "question": "If the input to an LTI system is $x[n]=e^{j n}$, the system output",
+      "options": [
+        "is always of the form $y[n]=A e^{j n}$",
+        "is always of the form $y[n]=e^{j n}$",
+        "is always of the form $y[n]=A e^{j n+j \\phi}$",
+        "cannot be determined"
+      ],
       "answers": {
-        "a": "a",
-        "b": "b",
-        "c": "c",
-        "d": "d"
+        "a": "is always of the form $y[n]=A e^{j n}$",
+        "b": "is always of the form $y[n]=e^{j n}$",
+        "c": "is always of the form $y[n]=A e^{j n+j \\phi}$",
+        "d": "cannot be determined"
       },
       "correctAnswer": "c",
       "difficulty": "Intermediate"
