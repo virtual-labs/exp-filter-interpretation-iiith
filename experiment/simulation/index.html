@@ -368,17 +368,26 @@
 	<script>
 		// Frequency Response dynamic labels
 		const frParamLabels = {
-			"1": ["Cutoff Frequency", "Not relevant"],
-			"2": ["Cutoff Frequency", "Not relevant"],
+			"1": ["Cutoff Frequency", null],
+			"2": ["Cutoff Frequency", null],
 			"3": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"],
 			"4": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"],
-			"5": ["Scalar Value", "Not relevant"],
-			"6": ["Delay (samples)", "Not relevant"]
+			"5": ["Scalar Value", null],
+			"6": ["Delay (samples)", null]
 		};
 		function updateFRLabels() {
 			const sel = document.getElementById("sig-names").value;
-			document.getElementById("fr-param1-label").textContent = frParamLabels[sel][0] ? frParamLabels[sel][0] : "Not relevant";
-			document.getElementById("fr-param2-label").textContent = frParamLabels[sel][1] ? frParamLabels[sel][1] : "Not relevant";
+			const param1Label = frParamLabels[sel][0];
+			const param2Label = frParamLabels[sel][1];
+			const param2Row = document.querySelector("input[id=fre2]").closest(".fill1");
+
+			document.getElementById("fr-param1-label").textContent = param1Label;
+			if (param2Label) {
+				document.getElementById("fr-param2-label").textContent = param2Label;
+				param2Row.style.display = "";
+			} else {
+				param2Row.style.display = "none";
+			}
 		}
 		document.getElementById("sig-names").addEventListener("change", updateFRLabels);
 		document.getElementById("sig-names").addEventListener("input", updateFRLabels);
@@ -386,15 +395,24 @@
 
 		// LTI Systems dynamic labels
 		const sysParamLabels = {
-			"1": ["Cutoff Frequency", "Not relevant"],
-			"2": ["Cutoff Frequency", "Not relevant"],
+			"1": ["Cutoff Frequency", null],
+			"2": ["Cutoff Frequency", null],
 			"3": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"],
 			"4": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"]
 		};
 		function updateSYSLabels() {
 			const sel = document.getElementById("sig-names2").value;
-			document.getElementById("sys-param1-label").textContent = sysParamLabels[sel][0] ? sysParamLabels[sel][0] : "Not relevant";
-			document.getElementById("sys-param2-label").textContent = sysParamLabels[sel][1] ? sysParamLabels[sel][1] : "Not relevant";
+			const param1Label = sysParamLabels[sel][0];
+			const param2Label = sysParamLabels[sel][1];
+			const param2Row = document.querySelector("input[id=cutoff2]").closest(".fill1");
+
+			document.getElementById("sys-param1-label").textContent = param1Label;
+			if (param2Label) {
+				document.getElementById("sys-param2-label").textContent = param2Label;
+				param2Row.style.display = "";
+			} else {
+				param2Row.style.display = "none";
+			}
 		}
 		document.getElementById("sig-names2").addEventListener("change", updateSYSLabels);
 		document.getElementById("sig-names2").addEventListener("input", updateSYSLabels);
@@ -402,15 +420,24 @@
 
 		// Quiz 2 (BLK1) dynamic labels
 		const blk1ParamLabels = {
-			"1": ["Cutoff Frequency", "Not relevant"],
-			"2": ["Cutoff Frequency", "Not relevant"],
+			"1": ["Cutoff Frequency", null],
+			"2": ["Cutoff Frequency", null],
 			"3": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"],
 			"4": ["Lower Cutoff Frequency", "Higher Cutoff Frequency"]
 		};
 		function updateBLK1Labels() {
 			const sel = document.getElementById("sig-names4").value;
-			document.getElementById("blk1-param1-label").textContent = blk1ParamLabels[sel][0] ? blk1ParamLabels[sel][0] : "Not relevant";
-			document.getElementById("blk1-param2-label").textContent = blk1ParamLabels[sel][1] ? blk1ParamLabels[sel][1] : "Not relevant";
+			const param1Label = blk1ParamLabels[sel][0];
+			const param2Label = blk1ParamLabels[sel][1];
+			const param2Row = document.querySelector("input[id=cutoff4]").closest(".fill1");
+
+			document.getElementById("blk1-param1-label").textContent = param1Label;
+			if (param2Label) {
+				document.getElementById("blk1-param2-label").textContent = param2Label;
+				param2Row.style.display = "";
+			} else {
+				param2Row.style.display = "none";
+			}
 		}
 		document.getElementById("sig-names4").addEventListener("change", updateBLK1Labels);
 		document.getElementById("sig-names4").addEventListener("input", updateBLK1Labels);
