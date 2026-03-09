@@ -1,3 +1,11 @@
+function generateRandomQuizValues() {
+  var low = 1.5 + (Math.random() * 0.5 - 0.25);
+  var high = 2.0 + (Math.random() * 0.4 - 0.2);
+  if (high <= low) high = low + 0.2;
+  document.getElementById("cutoff3").value = low.toFixed(2);
+  document.getElementById("cutoff4").value = high.toFixed(2);
+}
+
 function openPart(evt, name) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -20,6 +28,7 @@ function openPart(evt, name) {
   } else if (!name.localeCompare("MVG")) {
     mInit();
   } else if (!name.localeCompare("BLK1")) {
+    generateRandomQuizValues();
     qInit();
     if (typeof updateBLK1Labels === "function") updateBLK1Labels();
   } else {
@@ -53,7 +62,7 @@ function freqResp() {
   var xValues = makeArr(-Math.PI, Math.PI, N);
   if (sel1 == 1) {
     for (var i = 0; i <= 1000; i++) {
-      if (Math.abs(xValues[i]) < lc * Math.PI) {
+      if (Math.abs(xValues[i]) <= lc) {
         sigValues.push(1);
       } else {
         sigValues.push(0);
@@ -62,7 +71,7 @@ function freqResp() {
     }
   } else if (sel1 == 2) {
     for (var i = 0; i <= 1000; i++) {
-      if (Math.abs(xValues[i]) < lc * Math.PI) {
+      if (Math.abs(xValues[i]) <= lc) {
         sigValues.push(0);
       } else {
         sigValues.push(1);
@@ -71,14 +80,13 @@ function freqResp() {
     }
   } else if (sel1 == 3) {
     if (lc > hc) {
-      var temp = hc;
-      hc = lc;
-      lc = temp;
+      alert("Lower cutoff frequency must be less than or equal to higher cutoff frequency");
+      return;
     }
     for (var i = 0; i <= 1000; i++) {
       if (
-        Math.abs(xValues[i]) > lc * Math.PI &&
-        Math.abs(xValues[i]) < hc * Math.PI
+        Math.abs(xValues[i]) >= lc &&
+        Math.abs(xValues[i]) <= hc
       ) {
         sigValues.push(1);
       } else {
@@ -88,14 +96,13 @@ function freqResp() {
     }
   } else if (sel1 == 4) {
     if (lc > hc) {
-      var temp = hc;
-      hc = lc;
-      lc = temp;
+      alert("Lower cutoff frequency must be less than or equal to higher cutoff frequency");
+      return;
     }
     for (var i = 0; i <= 1000; i++) {
       if (
-        Math.abs(xValues[i]) > lc * Math.PI &&
-        Math.abs(xValues[i]) < hc * Math.PI
+        Math.abs(xValues[i]) >= lc &&
+        Math.abs(xValues[i]) <= hc
       ) {
         sigValues.push(0);
       } else {
@@ -140,10 +147,14 @@ function freqResp() {
     title: "Magnitude Spectrum",
     showlegend: false,
     xaxis: {
-      title: "Frequency",
+      title: "Frequency (rad/sample)",
+      range: [-Math.PI, Math.PI],
+      autorange: false,
     },
     yaxis: {
       title: "Magnitude",
+      range: [0, 1],
+      autorange: false,
     },
   };
 
@@ -151,7 +162,9 @@ function freqResp() {
     title: "Phase Spectrum",
     showlegend: false,
     xaxis: {
-      title: "Frequency",
+      title: "Frequency (rad/sample)",
+      range: [-Math.PI, Math.PI],
+      autorange: false,
     },
     yaxis: {
       title: "Phase",
@@ -226,9 +239,9 @@ function invFourier(waveform) {
         sum,
         math.complex(
           (math.re(waveform[n]) * Math.cos((2 * Math.PI * k * n) / N)) / N -
-            (math.im(waveform[n]) * Math.sin((2 * Math.PI * k * n) / N)) / N,
+          (math.im(waveform[n]) * Math.sin((2 * Math.PI * k * n) / N)) / N,
           (math.re(waveform[n]) * Math.sin((2 * Math.PI * k * n) / N)) / N +
-            (math.im(waveform[n]) * Math.cos((2 * Math.PI * k * n) / N)) / N,
+          (math.im(waveform[n]) * Math.cos((2 * Math.PI * k * n) / N)) / N,
         ),
       );
     }
@@ -258,8 +271,9 @@ function syst() {
   lc = parseFloat(lc);
   var hc = document.getElementById("cutoff2").value;
   hc = parseFloat(hc);
+
   am = 1;
-  freq = 0.3;
+  freq = 0.3 * Math.PI;
   var sigValues = [];
   var yValues = [];
 
@@ -285,7 +299,9 @@ function syst() {
       if (i < c) {
         sigValues.push(0);
       } else if (i < 2 * c) {
-        sigValues.push(am * xValues[i]);
+        var rampMax = parseInt((total - 1) / 2);
+        var normalizedRamp = (xValues[i] + rampMax) / (2 * rampMax);
+        sigValues.push(am * normalizedRamp);
       } else {
         sigValues.push(0);
       }
@@ -325,54 +341,43 @@ function syst() {
     phSpec.push(math.atan2(math.im(transOr[i]), math.re(transOr[i])));
   }
 
-  // Normalize amplitude spectrum
   var maxAmpSpec = Math.max(...ampSpec.map(Math.abs));
   ampSpec = ampSpec.map((value) => value / maxAmpSpec);
-
   var filValues = [];
-  if (sel1 == 2) {
-    for (var i = 0; i < wValues.length; i++) {
-      if (Math.abs(wValues[i]) < lc * Math.PI) {
+  var N_val = transOr.length;
+  for (var i = 0; i < N_val; i++) {
+    var f = (i < N_val / 2) ? (i * 2 * Math.PI / N_val) : ((i - N_val) * 2 * Math.PI / N_val);
+    var absf = Math.abs(f);
+
+    if (sel1 == 1) {
+      if (absf <= lc) {
         filValues.push(1);
       } else {
         filValues.push(0);
       }
-    }
-  } else if (sel1 == 1) {
-    for (var i = 0; i < wValues.length; i++) {
-      if (Math.abs(wValues[i]) < lc * Math.PI) {
+    } else if (sel1 == 2) {
+      if (absf <= lc) {
         filValues.push(0);
       } else {
         filValues.push(1);
       }
-    }
-  } else if (sel1 == 3) {
-    if (lc > hc) {
-      var temp = hc;
-      hc = lc;
-      lc = temp;
-    }
-    for (var i = 0; i < wValues.length; i++) {
-      if (
-        Math.abs(wValues[i]) > lc * Math.PI &&
-        Math.abs(wValues[i]) < hc * Math.PI
-      ) {
+    } else if (sel1 == 3) {
+      if (lc > hc) {
+        var temp = hc;
+        hc = lc;
+        lc = temp;
+      }
+      if (absf >= lc && absf <= hc) {
         filValues.push(1);
       } else {
         filValues.push(0);
       }
-    }
-  } else {
-    if (lc > hc) {
-      var temp = hc;
-      hc = lc;
-      lc = temp;
-    }
-    for (var i = 0; i < wValues.length; i++) {
-      if (
-        Math.abs(wValues[i]) > lc * Math.PI &&
-        Math.abs(wValues[i]) < hc * Math.PI
-      ) {
+    } else {
+      if (lc > hc) {
+        alert("Lower cutoff frequency must be less than or equal to higher cutoff frequency");
+        return;
+      }
+      if (absf >= lc && absf <= hc) {
         filValues.push(0);
       } else {
         filValues.push(1);
@@ -449,10 +454,14 @@ function syst() {
   var layout1 = {
     title: "Magnitude Spectrum",
     xaxis: {
-      title: "Frequency",
+      title: "Frequency (rad/sample)",
+      range: [-Math.PI, Math.PI],
+      autorange: false,
     },
     yaxis: {
       title: "Magnitude",
+      range: [0, 1],
+      autorange: false,
     },
     showlegend: true,
   };
@@ -521,7 +530,9 @@ function mInit() {
   var layout1 = {
     title: "Magnitude Spectrum",
     xaxis: {
-      title: "Frequency",
+      title: "Frequency (rad/sample)",
+      range: [-Math.PI, Math.PI],
+      autorange: false,
     },
     yaxis: {
       title: "Magnitude",
@@ -619,7 +630,9 @@ function qInit() {
   var layout1 = {
     title: "Magnitude Spectrum",
     xaxis: {
-      title: "Frequency",
+      title: "Frequency (rad/sample)",
+      range: [-Math.PI, Math.PI],
+      autorange: false,
     },
     yaxis: {
       title: "Magnitude",
@@ -664,10 +677,15 @@ function mavg1() {
   sel1 = parseFloat(sel1);
   var lc = document.getElementById("cutoff3").value;
   lc = parseFloat(lc);
-  lc = lc * Math.PI;
   var hc = document.getElementById("cutoff4").value;
   hc = parseFloat(hc);
-  hc = hc * Math.PI;
+
+  if (sel1 == 3 || sel1 == 4) {
+    if (lc > hc) {
+      alert("Lower cutoff frequency must be less than or equal to higher cutoff frequency");
+      return;
+    }
+  }
 
   if (sel1 == 2) {
     var element = document.getElementById("result2");
