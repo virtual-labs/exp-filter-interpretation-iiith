@@ -1,9 +1,6 @@
 function generateRandomQuizValues() {
-  var low = 1.5 + (Math.random() * 0.5 - 0.25);
-  var high = 2.0 + (Math.random() * 0.4 - 0.2);
-  if (high <= low) high = low + 0.2;
-  document.getElementById("cutoff3").value = low.toFixed(2);
-  document.getElementById("cutoff4").value = high.toFixed(2);
+  document.getElementById("cutoff3").value = 0;
+  document.getElementById("cutoff4").value = 0;
 }
 
 function openPart(evt, name) {
@@ -45,6 +42,17 @@ var boxChoice;
 var yValues;
 var inValues;
 
+var global_q1_i1 = 40;
+var global_q1_i2 = 20;
+var global_q2_i1 = 40;
+var global_q2_i2 = 20;
+var sigChoice;
+var scaleChoice;
+var delayChoice;
+var boxChoice;
+var yValues;
+var inValues;
+
 // ------------------------------------------ LTI Frequency Response ----------------------------------------------------------
 
 function freqResp() {
@@ -54,6 +62,11 @@ function freqResp() {
   lc = parseFloat(lc);
   var hc = document.getElementById("fre2").value;
   hc = parseFloat(hc);
+
+  if (sel1 == 6) {
+    lc = Math.round(lc);
+    document.getElementById("fre1").value = lc;
+  }
 
   N = 1001;
 
@@ -272,6 +285,14 @@ function syst() {
   var hc = document.getElementById("cutoff2").value;
   hc = parseFloat(hc);
 
+  if ((sel1 == 3 || sel1 == 4) && lc > hc) {
+    alert("Lower cutoff frequency must be less than or equal to higher cutoff frequency");
+    Plotly.purge("figure3");
+    Plotly.purge("figure4");
+    Plotly.purge("figure5");
+    return;
+  }
+
   am = 1;
   freq = 0.3 * Math.PI;
   var sigValues = [];
@@ -299,9 +320,7 @@ function syst() {
       if (i < c) {
         sigValues.push(0);
       } else if (i < 2 * c) {
-        var rampMax = parseInt((total - 1) / 2);
-        var normalizedRamp = (xValues[i] + rampMax) / (2 * rampMax);
-        sigValues.push(am * normalizedRamp);
+        sigValues.push(am);
       } else {
         sigValues.push(0);
       }
@@ -318,7 +337,9 @@ function syst() {
       if (i < c) {
         sigValues.push(0);
       } else if (i < 2 * c) {
-        sigValues.push(am);
+        var rampMax = parseInt((total - 1) / 2);
+        var normalizedRamp = (xValues[i] + rampMax) / (2 * rampMax);
+        sigValues.push(am * normalizedRamp);
       } else {
         sigValues.push(0);
       }
@@ -362,21 +383,12 @@ function syst() {
         filValues.push(1);
       }
     } else if (sel1 == 3) {
-      if (lc > hc) {
-        var temp = hc;
-        hc = lc;
-        lc = temp;
-      }
       if (absf >= lc && absf <= hc) {
         filValues.push(1);
       } else {
         filValues.push(0);
       }
     } else {
-      if (lc > hc) {
-        alert("Lower cutoff frequency must be less than or equal to higher cutoff frequency");
-        return;
-      }
       if (absf >= lc && absf <= hc) {
         filValues.push(0);
       } else {
@@ -403,11 +415,9 @@ function syst() {
     sigRealOut.push(math.re(sigValuesOut[i]));
   }
 
-  // Normalize the original signal values for plotting
+  // Do not normalize the original signal values for plotting so they match amplitude
   var maxSigValue = Math.max(...originalSigValues.map(Math.abs));
-  var normalizedSigValues = originalSigValues.map(
-    (value) => value / maxSigValue,
-  );
+  var normalizedSigValues = originalSigValues;
   var normalizedSpectrumValue = ampSpecOut.map((value) => value / maxAmpSpec);
 
   var trace1 = {
@@ -492,17 +502,21 @@ function syst() {
 // ------------------------------------------ Quiz 1 ----------------------------------------------------------
 
 function mInit() {
+  global_q1_i2 = 10 + Math.floor(Math.random() * 20);
+  global_q1_i1 = 40 + Math.floor(Math.random() * 20);
+  var i2_m = 200 - global_q1_i2;
+  var i1_m = 200 - global_q1_i1;
   var wValues = makeArr(-Math.PI, Math.PI, 201);
   var inValues = [];
   var outValues = [];
   for (var i = 0; i < 200; i++) {
-    if (i == 20 || i == 40 || i == 180 || i == 160) {
+    if (i == global_q1_i1 || i == global_q1_i2 || i == i1_m || i == i2_m) {
       inValues.push(1);
     } else {
       inValues.push(0);
     }
 
-    if (i == 40 || i == 160) {
+    if (i == global_q1_i1 || i == i1_m) {
       outValues.push(1);
     } else {
       outValues.push(0);
@@ -592,17 +606,21 @@ function mavg() {
 /* ----------------------------------------------- Quiz 2 --------------------------------- */
 
 function qInit() {
+  global_q2_i2 = 10 + Math.floor(Math.random() * 20);
+  global_q2_i1 = 40 + Math.floor(Math.random() * 20);
+  var i2_m = 200 - global_q2_i2;
+  var i1_m = 200 - global_q2_i1;
   var wValues = makeArr(-Math.PI, Math.PI, 201);
   var inValues = [];
   var outValues = [];
   for (var i = 0; i < 200; i++) {
-    if (i == 20 || i == 40 || i == 180 || i == 160) {
+    if (i == global_q2_i1 || i == global_q2_i2 || i == i1_m || i == i2_m) {
       inValues.push(1);
     } else {
       inValues.push(0);
     }
 
-    if (i == 40 || i == 160) {
+    if (i == global_q2_i1 || i == i1_m) {
       outValues.push(1);
     } else {
       outValues.push(0);
@@ -694,8 +712,10 @@ function mavg1() {
     element.innerHTML = "Wrong Answer!";
   } else {
     var wValues = makeArr(-Math.PI, Math.PI, 201);
-    var f1 = wValues[160];
-    var f2 = wValues[180];
+    var i1_m = 200 - global_q2_i1;
+    var i2_m = 200 - global_q2_i2;
+    var f1 = wValues[i1_m];
+    var f2 = wValues[i2_m];
     if (sel1 == 1) {
       if (lc >= f1 && lc <= f2) {
         var element = document.getElementById("result2");
