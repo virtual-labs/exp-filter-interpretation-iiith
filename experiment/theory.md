@@ -1,6 +1,8 @@
 
 # Theory #
 
+The Fourier transform helps in looking at signals and systems in the frequency domain. Specifically, for signals, it tells us about the frequency components present in them. For systems, it tells us about the response of the system to input signals of specific frequencies.
+
 ## Fourier transform ##
 
 The Fourier transform of a discrete-time signal $\textbf{x}[n]$ is given by,
