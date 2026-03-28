@@ -10,7 +10,7 @@
         "d": "$H(\\omega)=\\sin ^2(\\omega)$"
       },
       "correctAnswer": "c",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "The signal $x[n]=1+\\sin (n)+\\sin (\\pi n)$ is given as input to a low pass filter with cut-off frequency of 2 which gives the output signal $y[n]$. Select the correct statement from the following:",
@@ -21,7 +21,7 @@
         "d": "Neither $x[n]$ or $y[n]$ are periodic"
       },
       "correctAnswer": "d",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "When the signal $x[n]=\\sin (\\omega_o n)$ is given as input to a filter, the output is zero. Select the correct statement from the following:",
@@ -32,7 +32,7 @@
         "d": "Both (a) and (b) are correct"
       },
       "correctAnswer": "d",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "If the magnitude response of an LTI system is constant and the phase response is linear, then the input and output are related by",
@@ -43,7 +43,7 @@
         "d": "cannot be determined"
       },
       "correctAnswer": "a",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "If the input to an LTI system is $x[n]=e^{j n}$, the system output",
@@ -54,7 +54,7 @@
         "d": "cannot be determined"
       },
       "correctAnswer": "c",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     }
   ]
 }
