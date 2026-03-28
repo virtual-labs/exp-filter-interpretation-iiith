@@ -1,0 +1,60 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Which of the following functions cannot be frequency response of a discrete-time LTI system?",
+      "answers": {
+        "a": "$H(\\omega)=\\sin (\\omega)$",
+        "b": "$H(\\omega)=\\sin (2 \\omega)$",
+        "c": "$H(\\omega)=\\sin (\\omega / 2)$",
+        "d": "$H(\\omega)=\\sin ^2(\\omega)$"
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "The signal $x[n]=1+\\sin (n)+\\sin (\\pi n)$ is given as input to a low pass filter with cut-off frequency of 2 which gives the output signal $y[n]$. Select the correct statement from the following:",
+      "answers": {
+        "a": "Both $x[n]$ and $y[n]$ are periodic",
+        "b": "$x[n]$ is periodic but $y[n]$ is not",
+        "c": "$y[n]$ is periodic but $x[n]$ is not",
+        "d": "Neither $x[n]$ or $y[n]$ are periodic"
+      },
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "When the signal $x[n]=\\sin (\\omega_o n)$ is given as input to a filter, the output is zero. Select the correct statement from the following:",
+      "answers": {
+        "a": "If the system is a high pass filter, it will give zero output when the input is $x[n]=\\sin (\\omega_o / 2 n)$",
+        "b": "If the system is a low pass filter, it will give zero output when the input is $x[n]=\\sin (2 \\omega_o n)$",
+        "c": "If the system is a band pass filter, it will give zero output when the input is $x[n]=\\sin (\\omega_o / 2 n)$",
+        "d": "Both (a) and (b) are correct"
+      },
+      "correctAnswer": "d",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "If the magnitude response of an LTI system is constant and the phase response is linear, then the input and output are related by",
+      "answers": {
+        "a": "output signal is a scaled and delayed version of the input signal",
+        "b": "output signal is always a scaled version of the input signal",
+        "c": "output signal is always a delayed version of the input signal",
+        "d": "cannot be determined"
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "If the input to an LTI system is $x[n]=e^{j n}$, the system output",
+      "answers": {
+        "a": "is always of the form $y[n]=A e^{j n}$",
+        "b": "is always of the form $y[n]=e^{j n}$",
+        "c": "is always of the form $y[n]=A e^{j n+j \\phi}$",
+        "d": "cannot be determined"
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    }
+  ]
+}

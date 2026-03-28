@@ -1,0 +1,808 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* ---------------------------------- Laptops and Desktops ------------------------- */
+
+@media (min-width: 1200px){
+
+.max-width{
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+section .title{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 5%;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.fre{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.box1 {
+  position: relative;
+  margin-top: 70%;
+  margin-left: 15%;
+  margin-bottom: -40%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+}
+
+.box1 select {
+  background-color: #98CB3B;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border-style: solid;
+  border-width: 30px;
+  border-block-color: #176696;
+  border-block-start-color: #176696;
+  border-top-color: #176696;
+  border-color: #176696;
+  font-size: 20px;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.box1::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: #176696;
+  background-color: #176696;
+  pointer-events: none;
+}
+
+.box1:hover::before {
+  color: #176696;
+  background-color: #176696;
+}
+
+.box1 select option {
+  padding: 30px;
+}
+
+.fill1 {
+  position: relative;
+  margin-left: -10%;
+  margin-top: 20%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  float: left;
+}
+
+.box {
+  position: relative;
+  margin-left: -10%;
+  margin-right: 20%;
+  margin-top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.box select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 0%;
+  border: 1px solid #98CB3B;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  transition: border-color 0.3s ease;
+}
+
+.box::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+  padding: 30px;
+}
+
+.figureLast{
+  margin-left: -50%;
+}
+
+}
+
+/* ----------------------------------------- Big Tabs ------------------------------------------ */
+
+@media (max-width: 1200px) and (min-width: 768px){
+
+  
+.max-width{
+  max-width: 1024px;
+  padding: 0 40px;
+  margin: auto;
+}
+  
+section .title{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 10%;
+  width: 80%;
+  font-family: 'Ubuntu', sans-serif;
+}
+  
+.fre{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+  
+.box1 {
+    position: relative;
+    margin-top: 130%;
+    margin-left: 55%;
+    margin-bottom: -40%;
+    transform: translate(-50%, -50%);
+    width: 130%;
+}
+  
+.box1 select {
+    background-color: #98CB3B;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border-style: solid;
+    border-width: 30px;
+    border-block-color: #176696;
+    border-block-start-color: #176696;
+    border-top-color: #176696;
+    border-color: #176696;
+    font-size: 20px;
+    -webkit-appearance: button;
+    appearance: button;
+    outline: none;
+}
+  
+.box1::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: #176696;
+    background-color: #176696;
+    pointer-events: none;
+}
+  
+.box1:hover::before {
+    color: #176696;
+    background-color: #176696;
+}
+  
+.box1 select option {
+    padding: 30px;
+}
+  
+.fill1 {
+    position: relative;
+    margin-left: 25%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    float: left;
+}
+  
+.box {
+    position: relative;
+    margin-left: 30%;
+    margin-right: 20%;
+    margin-top: 40%;
+    transform: translate(-50%, -50%);
+}
+  
+.box select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 0%;
+    border: 1px solid #98CB3B;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    transition: border-color 0.3s ease;
+}
+  
+.box::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+  
+.box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+  
+.box select option {
+    padding: 30px;
+}
+
+.figureLast{
+    margin-left: -30%;
+}
+  
+}
+
+/* ----------------------------------------- Small Tabs ------------------------------------------ */
+
+@media (max-width: 768px) and (min-width: 720px){
+
+  
+.max-width{
+  max-width: 1024px;
+  padding: 0 40px;
+  margin: auto;
+}
+
+section .title{
+position: relative;
+text-align: center;
+color: #000000;
+font-size: 40px;
+font-weight: 500;
+margin-top: 10%;
+font-family: 'Ubuntu', sans-serif;
+}
+
+.fre{
+display: flex;
+color: #000000; /* Color of Name, and moving text in first page*/
+background-size: cover;
+background-attachment: fixed;
+font-family: 'Ubuntu', sans-serif;
+}
+
+.box1 {
+  position: relative;
+  margin-top: 100%;
+  margin-left: 55%;
+  margin-bottom: -40%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+}
+
+.box1 select {
+  background-color: #98CB3B;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border-style: solid;
+  border-width: 30px;
+  border-block-color: #176696;
+  border-block-start-color: #176696;
+  border-top-color: #176696;
+  border-color: #176696;
+  font-size: 20px;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.box1::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: #176696;
+  background-color: #176696;
+  pointer-events: none;
+}
+
+.box1:hover::before {
+  color: #176696;
+  background-color: #176696;
+}
+
+.box1 select option {
+  padding: 30px;
+}
+
+.fill1 {
+  position: relative;
+  margin-left: 25%;
+  margin-top: 20%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  float: left;
+}
+
+.box {
+  position: relative;
+  margin-left: 30%;
+  margin-right: 20%;
+  margin-top: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.box select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 0%;
+  border: 1px solid #98CB3B;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  transition: border-color 0.3s ease;
+}
+
+.box::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.box select option {
+  padding: 30px;
+}
+
+.figureLast{
+  margin-left: 0%;
+}
+
+}
+
+/* ----------------------------------------------- Large Phones ---------------------------------- */
+
+@media (max-width: 720px) and (min-width: 420px){
+
+  
+.max-width{
+  max-width: 715px;
+  padding: 0 40px;
+  margin: auto;
+}
+  
+  
+section .title{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 10%;
+  width: 80%;
+  font-family: 'Ubuntu', sans-serif;
+}
+  
+.fre{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.box1 {
+  position: relative;
+  margin-top: 100%;
+  margin-left: 55%;
+  margin-bottom: -40%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+}
+  
+.box1 select {
+  background-color: #98CB3B;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border-style: solid;
+  border-width: 30px;
+  border-block-color: #176696;
+  border-block-start-color: #176696;
+  border-top-color: #176696;
+  border-color: #176696;
+  font-size: 20px;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+  
+.box1::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: #176696;
+  background-color: #176696;
+  pointer-events: none;
+}
+  
+.box1:hover::before {
+  color: #176696;
+  background-color: #176696;
+}
+  
+.box1 select option {
+  padding: 30px;
+}
+
+.fill1 {
+  position: relative;
+  margin-left: 35%;
+  margin-top: 20%;
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  float: left;
+}
+
+.box {
+  position: relative;
+  margin-right: 20%;
+  margin-left: 25%;
+  margin-top: 40%;
+  transform: translate(-50%, -50%);
+}
+  
+.box select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 0%;
+  border: 1px solid #98CB3B;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  transition: border-color 0.3s ease;
+}
+  
+.box::before {
+  content: "\f13a";
+  font-family: 'Ubuntu', sans-serif;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+  
+.box:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+.box select option {
+  padding: 30px;
+}
+
+.figureLast{
+  margin-left: 0%;
+}
+
+}
+
+/* ------------------------------------- Small Phones ------------------------------------ */
+
+@media (max-width: 420px){
+
+  
+.max-width{
+  max-width: 460px;
+  padding: 0 40px;
+  margin: auto;
+}
+  
+section .title{
+  position: relative;
+  text-align: center;
+  color: #000000;
+  font-size: 40px;
+  font-weight: 500;
+  margin-top: 10%;
+  width: 80%;
+  font-family: 'Ubuntu', sans-serif;
+}
+  
+.fre{
+  display: flex;
+  color: #000000; /* Color of Name, and moving text in first page*/
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.box1 {
+  position: relative;
+  margin-top: 120%;
+  margin-left: 52%;
+  margin-bottom: -40%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+}
+  
+.box1 select {
+  background-color: #98CB3B;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border-style: solid;
+  border-width: 30px;
+  border-block-color: #176696;
+  border-block-start-color: #176696;
+  border-top-color: #176696;
+  border-color: #176696;
+  font-size: 20px;
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+  
+.box1::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: #176696;
+    background-color: #176696;
+    pointer-events: none;
+}
+  
+.box1:hover::before {
+    color: #176696;
+    background-color: #176696;
+}
+  
+.box1 select option {
+    padding: 30px;
+}
+
+.fill1 {
+    position: relative;
+    margin-left: 30%;
+    margin-top: 20%;
+    top: 0%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    float: left;
+}
+
+.box {
+    position: relative;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 40%;
+    transform: translate(-50%, -50%);
+}
+  
+.box select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 0%;
+    border: 1px solid #98CB3B;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    transition: border-color 0.3s ease;
+}
+  
+.box::before {
+    content: "\f13a";
+    font-family: 'Ubuntu', sans-serif;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    font-size: 28px;
+    line-height: 45px;
+    color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+}
+  
+.box:hover::before {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+  
+.box select option {
+    padding: 30px;
+}
+
+.figureLast{
+    margin-left: 0%;
+}
+  
+}
+
+/* ----------------------------------------- Plot Button -----------------------------------------------------*/
+
+.buttonTotal {
+  display: block;
+  width: 30%;
+  height: 20%;
+  font-size: 100%;
+  position: relative;
+  padding: 10px 20px;
+  background-color: #98CB3B;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-left: 0%;
+  margin-top: 40%;
+}
+
+.buttonTotal:hover {
+  background-color: #2C9AD1;
+  transform: scale(1.05);
+}
+
+/* ---------------------------------------------------- Tabs -------------------------------------------- */
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #FFFFFF;
+  background-color: #FFFFFF;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+  border-style: solid;
+  border-radius: 10px;
+  border-color: #98CB3B;
+  color: #176696;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+
+/* ------------------------------------------ Table ------------------------------------ */
+
+table,td,tr {
+        padding: 10%;
+        border: 3px solid black;
+        border-collapse: collapse;
+}
+
+th{
+  border: 3px solid black;
+  background-color: #AAA;
+}
