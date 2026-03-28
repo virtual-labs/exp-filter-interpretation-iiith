@@ -10,7 +10,7 @@
         "d": "Neither $x[n]$ or $y[n]$ are periodic"
       },
       "correctAnswer": "d",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "An LTI system with input output relation given by $y[n]=x[n]-x[n-1]$ acts as an",
@@ -21,7 +21,7 @@
         "d": "all pass filter"
       },
       "correctAnswer": "b",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "An LTI system with input output relation given by $h[n]=x[n]+x[n-1]$ acts as an",
@@ -32,7 +32,7 @@
         "d": "all pass filter"
       },
       "correctAnswer": "a",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "If the input to an LTI system is $x[n]=e^{j \\omega_1 n} + e^{j \\omega_2 n}$, which of the following output is not possible?",
@@ -43,7 +43,7 @@
         "d": "$e^{j \\omega_2 n}$"
       },
       "correctAnswer": "b",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     },
     {
       "question": "If the input to a band pass filter is $x[n]=e^{j \\omega_1 n} + e^{j \\omega_2 n}$, which of the following output is not possible?",
@@ -54,7 +54,7 @@
         "d": "all the above are possible"
       },
       "correctAnswer": "d",
-      "difficulty": "Intermediate"
+      "difficulty": "intermediate"
     }
   ]
 }
